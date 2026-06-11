@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Concept 5: Salon Noir</title>
+<style>
+  :root {
+    --bg: #0f1215;
+    --paper: #f3eee6;
+    --ink: #f7f3ed;
+    --muted: #b7b0a7;
+    --copper: #d08e52;
+    --olive: #7e8f67;
+    --wine: #824b59;
+    --line: rgba(243, 238, 230, 0.14);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    color: var(--ink);
+    background:
+      radial-gradient(circle at top, rgba(208, 142, 82, 0.14), transparent 26rem),
+      radial-gradient(circle at bottom right, rgba(126, 143, 103, 0.12), transparent 30rem),
+      var(--bg);
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .page {
+    width: min(1240px, calc(100% - 28px));
+    margin: 0 auto;
+    padding: 26px 0 58px;
+  }
+
+  .topbar,
+  .nav,
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .brand-kicker,
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 11px;
+    color: var(--muted);
+    font-family: "Helvetica Neue", Arial, sans-serif;
+  }
+
+  .brand-name {
+    margin: 0;
+    font-size: clamp(28px, 4vw, 46px);
+    font-weight: 400;
+    letter-spacing: 0.05em;
+  }
+
+  .pill-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .pill {
+    padding: 10px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    font-size: 13px;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    background: rgba(255,255,255,0.04);
+  }
+
+  .pill.active {
+    background: var(--paper);
+    color: #151618;
+    border-color: var(--paper);
+  }
+
+  .nav {
+    margin-top: 18px;
+    padding: 16px 18px;
+    border-radius: 24px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--line);
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 24px;
+    margin-top: 28px;
+    align-items: stretch;
+  }
+
+  .hero-copy,
+  .hero-gallery,
+  .idea-card {
+    border-radius: 30px;
+    overflow: hidden;
+  }
+
+  .hero-copy {
+    padding: 34px;
+    border: 1px solid var(--line);
+    background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  }
+
+  h1,
+  h2,
+  h3 {
+    margin: 0;
+    font-weight: 400;
+  }
+
+  h1 {
+    font-size: clamp(56px, 9vw, 104px);
+    line-height: 0.9;
+    margin-top: 14px;
+  }
+
+  .hero-copy p,
+  .idea-card p {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    color: var(--muted);
+    line-height: 1.75;
+    margin: 18px 0 0;
+    font-size: 17px;
+  }
+
+  .hero-copy .tag {
+    display: inline-block;
+    margin-top: 24px;
+    padding: 12px 14px;
+    border-radius: 16px;
+    background: rgba(208, 142, 82, 0.16);
+    color: var(--paper);
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .hero-gallery {
+    display: grid;
+    grid-template-columns: 1fr 0.72fr;
+    gap: 14px;
+    min-height: 700px;
+  }
+
+  .hero-gallery img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 24px;
+  }
+
+  .gallery-stack {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 14px;
+  }
+
+  section { margin-top: 56px; }
+
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+  }
+
+  .section-head h2 {
+    font-size: clamp(30px, 6vw, 56px);
+    line-height: 0.95;
+  }
+
+  .section-head p {
+    margin: 0;
+    max-width: 33rem;
+    color: var(--muted);
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.7;
+  }
+
+  .idea-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .idea-card {
+    padding: 26px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+    border: 1px solid var(--line);
+  }
+
+  .idea-card h3 {
+    font-size: 34px;
+    margin-top: 14px;
+    line-height: 0.96;
+  }
+
+  .footer {
+    margin-top: 42px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px;
+  }
+
+  @media (max-width: 980px) {
+    .hero,
+    .idea-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-gallery {
+      min-height: 520px;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div>
+        <div class="brand-kicker">Concept Direction 5</div>
+        <h1 class="brand-name">Cat Bassett Designs</h1>
+      </div>
+      <div class="pill-row">
+        <a class="pill" href="../index.html">Current Site</a>
+        <a class="pill" href="../concept-pattern-world/index.html">Earlier Concepts</a>
+      </div>
+    </header>
+
+    <div class="nav">
+      <div class="eyebrow">Go Wild Series</div>
+      <div class="pill-row">
+        <a class="pill" href="../concept-runway-chaos/index.html">Runway Chaos</a>
+        <a class="pill active" href="../concept-salon-noir/index.html">Salon Noir</a>
+        <a class="pill" href="../concept-play-lab/index.html">Play Lab</a>
+      </div>
+    </div>
+
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow">Experimental Direction</div>
+        <h1>Salon Noir</h1>
+        <p>
+          This is the dramatic, gallery-like version. It treats Cat’s work as collectible and
+          atmospheric, with a moody palette, richer contrast, and a much more luxurious tone than a
+          typical freelance portfolio.
+        </p>
+        <div class="tag">Best for: drama, mystique, luxury, confidence</div>
+      </div>
+      <div class="hero-gallery">
+        <img src="../assets/images/2021/03/design-01ked4begc-1767820078.png" alt="Interiors">
+        <div class="gallery-stack">
+          <img src="../assets/images/2022/12/winter-2-edited.png" alt="Conversational">
+          <img src="../assets/images/2021/02/my-photo-image.png" alt="About Cat">
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">What Makes It Interesting</div>
+          <h2>Less ecommerce. More private view.</h2>
+        </div>
+        <p>
+          It frames Cat as a designer with taste, mood, and authorship. The work feels more
+          intentional and less like a practical archive, which could be powerful if the audience is
+          fashion-facing or premium.
+        </p>
+      </div>
+      <div class="idea-grid">
+        <div class="idea-card">
+          <div class="eyebrow">01</div>
+          <h3>Dark gallery mood</h3>
+          <p>The background and typography create more emotional contrast and perceived sophistication.</p>
+        </div>
+        <div class="idea-card">
+          <div class="eyebrow">02</div>
+          <h3>Images as objects</h3>
+          <p>Rather than flat tiles, the work is presented like curated pieces in a salon-style arrangement.</p>
+        </div>
+        <div class="idea-card">
+          <div class="eyebrow">03</div>
+          <h3>Personality through restraint</h3>
+          <p>This version is bold by being unusually quiet, rich, and confident instead of loud.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">
+      <span>Concept 5: Salon Noir</span>
+      <span>Pushed toward a luxurious, atmospheric, gallery-like presence.</span>
+    </div>
+  </div>
+</body>
+</html>

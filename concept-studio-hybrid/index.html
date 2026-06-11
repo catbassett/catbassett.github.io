@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Concept 3: Studio + Portfolio Hybrid</title>
+<style>
+  :root {
+    --bg: #f1f0eb;
+    --ink: #181918;
+    --muted: #656b65;
+    --forest: #30453f;
+    --stone: #d7d3c7;
+    --rose: #b86c73;
+    --panel: rgba(255, 255, 255, 0.8);
+    --line: rgba(24, 25, 24, 0.12);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Lato", "Helvetica Neue", sans-serif;
+    color: var(--ink);
+    background:
+      linear-gradient(180deg, rgba(48, 69, 63, 0.06), transparent 24rem),
+      linear-gradient(180deg, #faf9f5 0%, var(--bg) 100%);
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .page {
+    width: min(1200px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 24px 0 56px;
+  }
+
+  .topbar,
+  .concept-nav,
+  .hero-grid,
+  .content-grid,
+  .portfolio-grid,
+  .footer-row {
+    display: grid;
+    gap: 20px;
+  }
+
+  .topbar {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+  }
+
+  .brand-kicker,
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  .brand-name,
+  h1,
+  h2,
+  h3 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 400;
+    margin: 0;
+  }
+
+  .brand-name {
+    font-size: clamp(30px, 4vw, 46px);
+  }
+
+  .site-links,
+  .nav-links,
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .pill,
+  .button {
+    padding: 11px 15px;
+    border-radius: 999px;
+    font-size: 13px;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.72);
+  }
+
+  .pill.active,
+  .button.primary {
+    background: var(--forest);
+    color: #fff;
+    border-color: var(--forest);
+  }
+
+  .concept-nav {
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    margin-top: 16px;
+    padding: 18px;
+    border-radius: 28px;
+    background: var(--panel);
+    box-shadow: 0 24px 44px rgba(44, 47, 43, 0.1);
+  }
+
+  .hero-grid {
+    grid-template-columns: 0.92fr 1.08fr;
+    margin-top: 28px;
+    align-items: stretch;
+  }
+
+  .hero-copy,
+  .hero-image,
+  .about-panel,
+  .services-panel,
+  .portfolio-card {
+    border-radius: 30px;
+    overflow: hidden;
+    background: var(--panel);
+    box-shadow: 0 24px 44px rgba(44, 47, 43, 0.1);
+  }
+
+  .hero-copy {
+    padding: 34px;
+    background:
+      linear-gradient(180deg, rgba(184, 108, 115, 0.09), transparent 38%),
+      var(--panel);
+  }
+
+  h1 {
+    font-size: clamp(50px, 8vw, 88px);
+    line-height: 0.94;
+    margin-top: 14px;
+  }
+
+  .hero-copy p {
+    margin: 18px 0 0;
+    max-width: 33rem;
+    color: var(--muted);
+    line-height: 1.72;
+    font-size: 18px;
+  }
+
+  .hero-image {
+    position: relative;
+    min-height: 620px;
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hero-badge {
+    position: absolute;
+    left: 22px;
+    bottom: 22px;
+    padding: 14px 16px;
+    border-radius: 18px;
+    background: rgba(24, 25, 24, 0.72);
+    color: #fff;
+    max-width: 260px;
+  }
+
+  .hero-badge p {
+    margin: 8px 0 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: rgba(255,255,255,0.8);
+  }
+
+  section { margin-top: 56px; }
+
+  .section-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+
+  .section-head h2 {
+    font-size: clamp(30px, 5vw, 46px);
+  }
+
+  .section-head p {
+    max-width: 34rem;
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  .content-grid {
+    grid-template-columns: 0.9fr 1.1fr;
+  }
+
+  .about-panel,
+  .services-panel {
+    padding: 28px;
+  }
+
+  .about-panel p,
+  .services-panel p {
+    margin: 14px 0 0;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .service-list {
+    display: grid;
+    gap: 12px;
+    margin-top: 22px;
+  }
+
+  .service-item {
+    padding: 16px 18px;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.72);
+    border: 1px solid rgba(24, 25, 24, 0.08);
+  }
+
+  .service-item strong {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 16px;
+  }
+
+  .service-item span {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  .portfolio-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .portfolio-card img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+  }
+
+  .portfolio-copy {
+    padding: 18px;
+  }
+
+  .portfolio-copy h3 {
+    font-size: 28px;
+    margin-top: 8px;
+  }
+
+  .portfolio-copy p {
+    margin: 10px 0 0;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .footer-row {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    margin-top: 42px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  @media (max-width: 980px) {
+    .hero-grid,
+    .content-grid,
+    .portfolio-grid,
+    .concept-nav,
+    .footer-row {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-image {
+      min-height: 440px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .page {
+      width: min(100% - 20px, 1200px);
+      padding-bottom: 40px;
+    }
+
+    .topbar {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div>
+        <div class="brand-kicker">Concept Direction 3</div>
+        <div class="brand-name">Cat Bassett Designs</div>
+      </div>
+      <div class="site-links">
+        <a class="pill" href="../index.html">Current Site</a>
+        <a class="pill" href="../about/index.html">About</a>
+      </div>
+    </header>
+
+    <div class="concept-nav">
+      <div class="eyebrow">Creative Redesign Explorer</div>
+      <div class="nav-links">
+        <a class="pill" href="../concept-editorial/index.html">Editorial Fashion</a>
+        <a class="pill" href="../concept-pattern-world/index.html">Pattern World</a>
+        <a class="pill active" href="../concept-studio-hybrid/index.html">Studio Hybrid</a>
+      </div>
+    </div>
+
+    <section class="hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow">Portfolio with a stronger designer narrative</div>
+        <h1>More than a gallery.<br>A studio home.</h1>
+        <p>
+          This direction combines easy access to the portfolio with a clearer sense of Cat as a
+          person and a senior creative. It’s better for relationship building, commissions, and
+          giving the site more warmth.
+        </p>
+        <div class="cta-row" style="margin-top:26px;">
+          <a class="button primary" href="../about/index.html">Meet Cat</a>
+          <a class="button" href="../prints/index.html">See Selected Work</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="../assets/images/2021/02/my-photo-image.png" alt="Portrait of Cat Bassett">
+        <div class="hero-badge">
+          <div class="eyebrow" style="color: rgba(255,255,255,0.7);">Why This Works</div>
+          <p>
+            It makes the site feel more human and memorable, while still keeping the portfolio front
+            and center.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Studio Framing</div>
+          <h2>Tell the story behind the surface.</h2>
+        </div>
+        <p>
+          This concept is built around the idea that Cat’s experience, taste, and versatility are
+          part of the value. The site helps clients see both the work and the designer.
+        </p>
+      </div>
+      <div class="content-grid">
+        <div class="about-panel">
+          <div class="eyebrow">Potential Homepage Intro</div>
+          <h3 style="font-size:36px; margin-top:10px;">Senior print designer with a broad visual range.</h3>
+          <p>
+            Use a short editorial biography, then lead into selected portfolio areas. This gives the
+            homepage a much stronger sense of presence and confidence.
+          </p>
+          <p>
+            It also creates room later for testimonials, collaborators, clients, press, or a more
+            developed studio approach section if needed.
+          </p>
+        </div>
+        <div class="services-panel">
+          <div class="eyebrow">Suggested New Sections</div>
+          <h3 style="font-size:36px; margin-top:10px;">Selected Projects, Design Approach, Collaborations.</h3>
+          <div class="service-list">
+            <div class="service-item">
+              <strong>Selected Projects</strong>
+              <span>Curated highlights from prints, kids, interiors, and graphics.</span>
+            </div>
+            <div class="service-item">
+              <strong>Design Approach</strong>
+              <span>A short explanation of how Cat develops collections, motifs, and applications.</span>
+            </div>
+            <div class="service-item">
+              <strong>Studio Notes</strong>
+              <span>Optional space for sketches, inspiration, seasonal thinking, or works in progress.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Portfolio Access</div>
+          <h2>Still quick to browse, just more intentional.</h2>
+        </div>
+        <p>
+          The homepage still needs clear category entry points. Here they’re framed as selected
+          practice areas, rather than a plain menu of destinations.
+        </p>
+      </div>
+      <div class="portfolio-grid">
+        <a class="portfolio-card" href="../embroideries/index.html">
+          <img src="../assets/images/2021/02/embroidery-web-page.png" alt="Embroideries">
+          <div class="portfolio-copy">
+            <div class="eyebrow">Decorative Placement</div>
+            <h3>Embroideries</h3>
+            <p>Signature embellishment-led work presented as a key creative strength.</p>
+          </div>
+        </a>
+        <a class="portfolio-card" href="../graphics/index.html">
+          <img src="../assets/images/2026/05/graphics-hero.png" alt="Graphics">
+          <div class="portfolio-copy">
+            <div class="eyebrow">Graphic Language</div>
+            <h3>Graphics</h3>
+            <p>Show how Cat’s aesthetic translates into slogan, motif, and placement categories.</p>
+          </div>
+        </a>
+        <a class="portfolio-card" href="../interiors/index.html">
+          <img src="../assets/images/2021/03/design-01ked4begc-1767820078.png" alt="Interiors">
+          <div class="portfolio-copy">
+            <div class="eyebrow">Print in Context</div>
+            <h3>Interiors</h3>
+            <p>Bring the work into lifestyle space and show range beyond apparel alone.</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <div class="footer-row">
+      <span>Concept 3: Studio + Portfolio Hybrid</span>
+      <span>Best for adding warmth, narrative, and long-term professional presence.</span>
+    </div>
+  </div>
+</body>
+</html>

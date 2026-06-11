@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Concept 12: Folk Pop Salon</title>
+<style>
+  :root {
+    --ivory: #fff7ef;
+    --ink: #1f1712;
+    --muted: #735f53;
+    --tomato: #d75b3f;
+    --mustard: #dca942;
+    --forest: #4f7f63;
+    --berry: #9a4f72;
+    --panel: rgba(255, 250, 243, 0.84);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    color: var(--ink);
+    font-family: "Trebuchet MS", "Helvetica Neue", sans-serif;
+    background:
+      radial-gradient(circle at top left, rgba(215, 91, 63, 0.18), transparent 18rem),
+      radial-gradient(circle at top right, rgba(79, 127, 99, 0.18), transparent 18rem),
+      repeating-conic-gradient(from 0deg, rgba(220, 169, 66, 0.09) 0 12deg, transparent 12deg 24deg),
+      var(--ivory);
+  }
+  a { color: inherit; text-decoration: none; }
+  .page {
+    width: min(1240px, calc(100% - 20px));
+    margin: 0 auto;
+    padding: 22px 0 56px;
+  }
+  .topbar, .nav, .section-head, .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 11px;
+    color: var(--muted);
+  }
+  h1, h2, h3, p { margin: 0; }
+  h1, h2, h3 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 700;
+  }
+  .brand { font-size: clamp(30px, 4vw, 46px); }
+  .pill-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .pill {
+    padding: 10px 14px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.74);
+    border: 1px solid rgba(31, 23, 18, 0.1);
+    font-size: 13px;
+  }
+  .pill.active {
+    background: linear-gradient(135deg, var(--forest), var(--berry));
+    color: #fff;
+    border-color: transparent;
+  }
+  .nav {
+    margin-top: 16px;
+    padding: 16px 18px;
+    border-radius: 26px;
+    background: var(--panel);
+    box-shadow: 0 18px 36px rgba(45, 33, 28, 0.08);
+  }
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+    margin-top: 28px;
+    align-items: center;
+  }
+  .hero-copy {
+    padding: 18px 4px 0 4px;
+  }
+  h1 {
+    font-size: clamp(60px, 9vw, 112px);
+    line-height: 0.86;
+    letter-spacing: -0.04em;
+    margin-top: 12px;
+  }
+  .hero-copy p, .card p, .portfolio-copy p {
+    margin-top: 18px;
+    line-height: 1.72;
+    color: var(--muted);
+    font-size: 18px;
+  }
+  .salon {
+    position: relative;
+    min-height: 560px;
+    border-radius: 34px;
+    overflow: hidden;
+    background:
+      repeating-linear-gradient(90deg, rgba(215, 91, 63, 0.12) 0 10px, transparent 10px 20px),
+      linear-gradient(180deg, #fff4ec, #fffdf8);
+    box-shadow: 0 18px 36px rgba(45, 33, 28, 0.12);
+  }
+  .medallion, .frame {
+    position: absolute;
+    overflow: hidden;
+    border-radius: 26px;
+    box-shadow: 0 18px 34px rgba(45, 33, 28, 0.12);
+    background: #fff;
+  }
+  .frame img, .medallion img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .medallion {
+    top: 26px;
+    left: 28px;
+    width: 210px;
+    height: 210px;
+    border-radius: 50%;
+    border: 10px solid rgba(220, 169, 66, 0.36);
+  }
+  .frame.one { top: 60px; right: 28px; width: 48%; height: 220px; }
+  .frame.two { left: 28px; bottom: 28px; width: 42%; height: 220px; transform: rotate(-3deg); }
+  .frame.three { right: 38px; bottom: 44px; width: 32%; height: 170px; transform: rotate(4deg); }
+  section { margin-top: 56px; }
+  .section-head {
+    align-items: end;
+    margin-bottom: 18px;
+  }
+  .section-head h2 {
+    font-size: clamp(32px, 6vw, 58px);
+    line-height: 0.9;
+  }
+  .section-head p {
+    max-width: 34rem;
+    color: var(--muted);
+    line-height: 1.66;
+  }
+  .card-grid, .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+  }
+  .card, .portfolio-card {
+    background: var(--panel);
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 18px 36px rgba(45, 33, 28, 0.08);
+  }
+  .card {
+    padding: 24px;
+    background:
+      linear-gradient(180deg, rgba(220, 169, 66, 0.08), transparent 24%),
+      var(--panel);
+  }
+  .card h3 {
+    margin-top: 14px;
+    font-size: 34px;
+    line-height: 0.92;
+  }
+  .portfolio-card img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+  }
+  .portfolio-copy {
+    padding: 18px;
+  }
+  .portfolio-card:nth-child(1) .portfolio-copy { background: rgba(215, 91, 63, 0.09); }
+  .portfolio-card:nth-child(2) .portfolio-copy { background: rgba(79, 127, 99, 0.1); }
+  .portfolio-card:nth-child(3) .portfolio-copy { background: rgba(154, 79, 114, 0.1); }
+  .portfolio-copy h3 {
+    margin-top: 8px;
+    font-size: 30px;
+  }
+  .footer {
+    margin-top: 42px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(31, 23, 18, 0.12);
+    color: var(--muted);
+    font-size: 14px;
+  }
+  @media (max-width: 980px) {
+    .hero, .card-grid, .portfolio-grid { grid-template-columns: 1fr; }
+    .salon { min-height: 520px; }
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div>
+        <div class="eyebrow">Pattern Maximal Series</div>
+        <h1 class="brand">Cat Bassett Designs</h1>
+      </div>
+      <div class="pill-row">
+        <a class="pill" href="../index.html">Current Site</a>
+        <a class="pill" href="../concepts/index.html">All Concepts</a>
+      </div>
+    </header>
+
+    <div class="nav">
+      <div class="eyebrow">New Pattern-Heavy Directions</div>
+      <div class="pill-row">
+        <a class="pill" href="../concept-pattern-parade/index.html">Pattern Parade</a>
+        <a class="pill" href="../concept-maximal-mosaic/index.html">Maximal Mosaic</a>
+        <a class="pill active" href="../concept-folk-pop-salon/index.html">Folk Pop Salon</a>
+      </div>
+    </div>
+
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow">Decorative, folkloric, glamorous</div>
+        <h1>Folk Pop Salon</h1>
+        <p>
+          This one leans into ornament, framing, medallions, and playful pattern history. It feels
+          more like a decorative salon than a digital portfolio, while still giving the work center stage.
+        </p>
+      </div>
+      <div class="salon">
+        <div class="medallion"><img src="../assets/images/2021/02/my-photo-image.png" alt="Cat portrait"></div>
+        <div class="frame one"><img src="../assets/images/2021/02/embroidery-web-page.png" alt="Embroideries"></div>
+        <div class="frame two"><img src="../assets/images/2022/10/printlace1.png" alt="Pattern"></div>
+        <div class="frame three"><img src="../assets/images/2026/05/kids-hero.png" alt="Kids"></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">What It Does</div>
+          <h2>Shows off decorative instincts at full volume.</h2>
+        </div>
+        <p>
+          If Cat wants the site to visibly express a love of ornament and motif, this is the one
+          that most proudly turns the interface into part of the show.
+        </p>
+      </div>
+      <div class="card-grid">
+        <div class="card">
+          <div class="eyebrow">01</div>
+          <h3>Pattern with personality</h3>
+          <p>The decorative wrappers help the site feel authored, playful, and less like a generic shell.</p>
+        </div>
+        <div class="card">
+          <div class="eyebrow">02</div>
+          <h3>Frames as theatre</h3>
+          <p>Images become displayed objects, which helps elevate the portfolio into a more memorable scene.</p>
+        </div>
+        <div class="card">
+          <div class="eyebrow">03</div>
+          <h3>High fun, not low polish</h3>
+          <p>The point is not chaos for its own sake, but giving Cat a much more distinctive visual signature.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Portfolio</div>
+          <h2>Decorative wrappers, clean destinations.</h2>
+        </div>
+        <p>
+          Even the wildest presentation still works best if the actual category entry points remain obvious and usable.
+        </p>
+      </div>
+      <div class="portfolio-grid">
+        <a class="portfolio-card" href="../embroideries/index.html">
+          <img src="../assets/images/2021/02/embroidery-web-page.png" alt="Embroideries">
+          <div class="portfolio-copy">
+            <div class="eyebrow">Portfolio</div>
+            <h3>Embroideries</h3>
+            <p>This category feels especially aligned with the salon-like, decorative richness of the concept.</p>
+          </div>
+        </a>
+        <a class="portfolio-card" href="../prints/index.html">
+          <img src="../assets/images/2021/02/instagram-page.jpg" alt="Prints">
+          <div class="portfolio-copy">
+            <div class="eyebrow">Portfolio</div>
+            <h3>Prints</h3>
+            <p>Painterly and ornamental collections would feel especially alive in this framing.</p>
+          </div>
+        </a>
+        <a class="portfolio-card" href="../kids/index.html">
+          <img src="../assets/images/2026/05/kids-hero.png" alt="Kids">
+          <div class="portfolio-copy">
+            <div class="eyebrow">Portfolio</div>
+            <h3>Kids</h3>
+            <p>The warmth and decorative play gives younger categories real charm without feeling childish.</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <div class="footer">
+      <span>Concept 12: Folk Pop Salon</span>
+      <span>Ornamental, joyful, and strongly decorative in a more theatrical way.</span>
+    </div>
+  </div>
+</body>
+</html>

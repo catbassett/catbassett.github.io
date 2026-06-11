@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Concept 11: Maximal Mosaic</title>
+<style>
+  :root {
+    --sand: #f3ead8;
+    --ink: #181514;
+    --muted: #6a6057;
+    --rust: #c65a3a;
+    --plum: #7d3f7e;
+    --cobalt: #3256c5;
+    --moss: #80914f;
+    --panel: rgba(255, 249, 240, 0.8);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    color: var(--ink);
+    font-family: "Trebuchet MS", "Helvetica Neue", sans-serif;
+    background:
+      linear-gradient(45deg, rgba(198, 90, 58, 0.08) 25%, transparent 25% 50%, rgba(50, 86, 197, 0.08) 50% 75%, transparent 75%),
+      linear-gradient(180deg, #fbf6ee 0%, var(--sand) 100%);
+    background-size: 48px 48px, auto;
+  }
+  a { color: inherit; text-decoration: none; }
+  .page {
+    width: min(1280px, calc(100% - 20px));
+    margin: 0 auto;
+    padding: 22px 0 56px;
+  }
+  .topbar, .nav, .section-head, .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 11px;
+    color: var(--muted);
+  }
+  h1, h2, h3, p { margin: 0; }
+  h1, h2, h3 {
+    font-family: "Arial Black", "Trebuchet MS", sans-serif;
+    font-weight: 900;
+  }
+  .brand { font-size: clamp(30px, 4vw, 46px); }
+  .pill-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .pill {
+    padding: 10px 14px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.74);
+    border: 1px solid rgba(24, 21, 20, 0.1);
+    font-size: 13px;
+  }
+  .pill.active {
+    background: linear-gradient(135deg, var(--plum), var(--cobalt));
+    color: #fff;
+    border-color: transparent;
+  }
+  .nav {
+    margin-top: 16px;
+    padding: 16px 18px;
+    border-radius: 26px;
+    background: var(--panel);
+    box-shadow: 0 18px 36px rgba(45, 32, 27, 0.08);
+  }
+  .hero {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 22px;
+    margin-top: 28px;
+    align-items: center;
+  }
+  .hero-copy {
+    padding: 18px 4px 0 4px;
+  }
+  h1 {
+    font-size: clamp(66px, 10vw, 130px);
+    line-height: 0.84;
+    letter-spacing: -0.06em;
+    margin-top: 12px;
+    text-transform: uppercase;
+  }
+  .hero-copy p, .card p, .portfolio-copy p {
+    margin-top: 18px;
+    line-height: 1.72;
+    color: var(--muted);
+    font-size: 18px;
+  }
+  .mosaic {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr 0.8fr;
+    grid-template-rows: 200px 200px 180px;
+    gap: 14px;
+  }
+  .box {
+    position: relative;
+    overflow: hidden;
+    border-radius: 26px;
+    box-shadow: 0 18px 34px rgba(45, 32, 27, 0.12);
+    background: #fff;
+  }
+  .box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .box.a { grid-row: 1 / span 2; }
+  .box.pattern-one {
+    background:
+      repeating-linear-gradient(135deg, rgba(198, 90, 58, 0.22) 0 14px, transparent 14px 28px),
+      #fff4ea;
+  }
+  .box.pattern-two {
+    background:
+      radial-gradient(circle at center, rgba(125, 63, 126, 0.2) 0 16px, transparent 16px),
+      radial-gradient(circle at 60% 60%, rgba(50, 86, 197, 0.16) 0 12px, transparent 12px),
+      #f7f3ff;
+    background-size: 90px 90px, 70px 70px, auto;
+  }
+  .box.pattern-three {
+    background:
+      repeating-linear-gradient(90deg, rgba(128, 145, 79, 0.24) 0 12px, transparent 12px 24px),
+      #f6f5df;
+  }
+  section { margin-top: 56px; }
+  .section-head {
+    align-items: end;
+    margin-bottom: 18px;
+  }
+  .section-head h2 {
+    font-size: clamp(32px, 6vw, 58px);
+    line-height: 0.9;
+    text-transform: uppercase;
+  }
+  .section-head p {
+    max-width: 34rem;
+    color: var(--muted);
+    line-height: 1.66;
+  }
+  .card-grid, .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+  }
+  .card, .portfolio-card {
+    background: var(--panel);
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 18px 36px rgba(45, 32, 27, 0.08);
+  }
+  .card {
+    padding: 24px;
+  }
+  .card h3 {
+    margin-top: 14px;
+    font-size: 34px;
+    line-height: 0.92;
+  }
+  .portfolio-card img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+  }
+  .portfolio-copy {
+    padding: 18px;
+  }
+  .portfolio-card:nth-child(1) .portfolio-copy { background: rgba(198, 90, 58, 0.1); }
+  .portfolio-card:nth-child(2) .portfolio-copy { background: rgba(125, 63, 126, 0.1); }
+  .portfolio-card:nth-child(3) .portfolio-copy { background: rgba(128, 145, 79, 0.12); }
+  .portfolio-copy h3 {
+    margin-top: 8px;
+    font-size: 30px;
+  }
+  .footer {
+    margin-top: 42px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(24, 21, 20, 0.12);
+    color: var(--muted);
+    font-size: 14px;
+  }
+  @media (max-width: 980px) {
+    .hero, .card-grid, .portfolio-grid { grid-template-columns: 1fr; }
+    .mosaic { grid-template-columns: 1fr 1fr; grid-template-rows: 180px 180px 180px 180px; }
+    .box.a { grid-row: auto; }
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div>
+        <div class="eyebrow">Pattern Maximal Series</div>
+        <h1 class="brand">Cat Bassett Designs</h1>
+      </div>
+      <div class="pill-row">
+        <a class="pill" href="../index.html">Current Site</a>
+        <a class="pill" href="../concepts/index.html">All Concepts</a>
+      </div>
+    </header>
+
+    <div class="nav">
+      <div class="eyebrow">New Pattern-Heavy Directions</div>
+      <div class="pill-row">
+        <a class="pill" href="../concept-pattern-parade/index.html">Pattern Parade</a>
+        <a class="pill active" href="../concept-maximal-mosaic/index.html">Maximal Mosaic</a>
+        <a class="pill" href="../concept-folk-pop-salon/index.html">Folk Pop Salon</a>
+      </div>
+    </div>
+
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow">Tile, clash, repeat, collide</div>
+        <h1>Maximal Mosaic</h1>
+        <p>
+          This direction feels more like a curated wall of swatches, tear sheets, and pattern
+          fragments. It shows range aggressively and makes the visual mix itself part of the appeal.
+        </p>
+      </div>
+      <div class="mosaic">
+        <div class="box a"><img src="../assets/images/2026/05/graphics-hero.png" alt="Graphics"></div>
+        <div class="box pattern-one"></div>
+        <div class="box"><img src="../assets/images/2022/10/printdeco3.png" alt="Pattern"></div>
+        <div class="box"><img src="../assets/images/2026/05/kids-hero.png" alt="Kids"></div>
+        <div class="box pattern-two"></div>
+        <div class="box pattern-three"></div>
+        <div class="box"><img src="../assets/images/2021/02/embroidery-web-page.png" alt="Embroideries"></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">What It Does</div>
+          <h2>Feels like a premium pattern board, not a web template.</h2>
+        </div>
+        <p>
+          The best part of this concept is how unapologetically it mixes images and decorative
+          surfaces. It reads as a serious designer who isn’t afraid of visual richness.
+        </p>
+      </div>
+      <div class="card-grid">
+        <div class="card">
+          <div class="eyebrow">01</div>
+          <h3>Layered categories</h3>
+          <p>Instead of one uniform card system, categories can arrive in different shapes, sizes, and intensities.</p>
+        </div>
+        <div class="card">
+          <div class="eyebrow">02</div>
+          <h3>Decorative rhythm</h3>
+          <p>The patterns between the images stop the site from ever feeling flat or too polite.</p>
+        </div>
+        <div class="card">
+          <div class="eyebrow">03</div>
+          <h3>More fashion wall than brochure</h3>
+          <p>It feels styled, arranged, and art-directed, which helps Cat’s visual authority come through.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Portfolio</div>
+          <h2>Strong routes, richer wrappers.</h2>
+        </div>
+        <p>
+          Even with all the expressive patterning, the portfolio destinations can still be cleanly named and easy to enter.
+        </p>
+      </div>
+      <div class="portfolio-grid">
+        <a class="portfolio-card" href="../graphics/index.html">
+          <img src="../assets/images/2026/05/graphics-hero.png" alt="Graphics">
+          <div class="portfolio-copy">
+            <div class="eyebrow">Portfolio</div>
+            <h3>Graphics</h3>
+            <p>Graphic categories benefit from the sharper, more collage-like energy here.</p>
+          </div>
+        </a>
+        <a class="portfolio-card" href="../athleisure/index.html">
+          <img src="../assets/images/2026/05/gemini_generated_image_5pl4md5pl4md5pl4.png" alt="athleisure">
+          <div class="portfolio-copy">
+            <div class="eyebrow">Portfolio</div>
+            <h3>athleisure</h3>
+            <p>Commercial application work feels fresher when surrounded by stronger visual styling.</p>
+          </div>
+        </a>
+        <a class="portfolio-card" href="../embroideries/index.html">
+          <img src="../assets/images/2021/02/embroidery-web-page.png" alt="Embroideries">
+          <div class="portfolio-copy">
+            <div class="eyebrow">Portfolio</div>
+            <h3>Embroideries</h3>
+            <p>The decorative detail in this category matches the richness of the interface itself.</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <div class="footer">
+      <span>Concept 11: Maximal Mosaic</span>
+      <span>Pattern-heavy, tiled, art-directed, and intentionally rich.</span>
+    </div>
+  </div>
+</body>
+</html>

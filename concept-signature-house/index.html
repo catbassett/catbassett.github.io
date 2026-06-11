@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Concept 9: Signature House</title>
+<style>
+  :root {
+    --bg: #f4ead8;
+    --ink: #191511;
+    --muted: #6f6155;
+    --line: rgba(25, 21, 17, 0.12);
+    --panel: rgba(255,252,247,0.82);
+    --accent: #7a4f4b;
+    --jade: #64896e;
+    --peach: #dfa078;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Lato", "Helvetica Neue", sans-serif;
+    color: var(--ink);
+    background:
+      radial-gradient(circle at 12% 14%, rgba(223, 160, 120, 0.16), transparent 20rem),
+      radial-gradient(circle at 88% 18%, rgba(100, 137, 110, 0.14), transparent 20rem),
+      linear-gradient(180deg, rgba(122, 79, 75, 0.08), transparent 18rem),
+      linear-gradient(180deg, #f8f3ec 0%, var(--bg) 100%);
+  }
+  a { color: inherit; text-decoration: none; }
+  .page {
+    width: min(1200px, calc(100% - 30px));
+    margin: 0 auto;
+    padding: 28px 0 56px;
+  }
+  .topbar, .nav, .section-head, .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 11px;
+    color: var(--muted);
+  }
+  h1, h2, h3, p { margin: 0; }
+  h1, h2, h3 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 400;
+  }
+  .brand {
+    font-size: clamp(30px, 4vw, 46px);
+  }
+  .pill-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .pill {
+    padding: 10px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: rgba(255,255,255,0.76);
+    font-size: 13px;
+  }
+  .pill.active {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+  .nav {
+    margin-top: 16px;
+    padding: 16px 18px;
+    border-radius: 24px;
+    background:
+      linear-gradient(135deg, rgba(223, 160, 120, 0.08), rgba(100, 137, 110, 0.06)),
+      var(--panel);
+    box-shadow: 0 18px 34px rgba(36, 29, 22, 0.08);
+  }
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+    margin-top: 28px;
+  }
+  .hero-panel {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 18px;
+    align-items: stretch;
+    background: var(--panel);
+    border-radius: 34px;
+    overflow: hidden;
+    box-shadow: 0 20px 38px rgba(36, 29, 22, 0.08);
+  }
+  .hero-copy {
+    padding: 34px;
+  }
+  h1 {
+    font-size: clamp(54px, 8vw, 92px);
+    line-height: 0.92;
+    margin-top: 14px;
+  }
+  .hero-copy p, .column p, .portfolio-copy p {
+    margin-top: 16px;
+    line-height: 1.72;
+    color: var(--muted);
+    font-size: 17px;
+  }
+  .hero-panel img {
+    width: 100%;
+    height: 100%;
+    min-height: 520px;
+    object-fit: cover;
+    display: block;
+  }
+  section { margin-top: 56px; }
+  .section-head {
+    align-items: end;
+    margin-bottom: 18px;
+  }
+  .section-head h2 {
+    font-size: clamp(30px, 5vw, 46px);
+  }
+  .section-head p {
+    max-width: 34rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+  .triple {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+  }
+  .column, .portfolio-card {
+    background: var(--panel);
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 18px 34px rgba(36, 29, 22, 0.08);
+  }
+  .column {
+    padding: 28px;
+  }
+  .column:nth-child(1) {
+    background:
+      linear-gradient(180deg, rgba(122, 79, 75, 0.08), transparent 28%),
+      var(--panel);
+  }
+  .column:nth-child(2) {
+    background:
+      linear-gradient(180deg, rgba(100, 137, 110, 0.1), transparent 28%),
+      var(--panel);
+  }
+  .column:nth-child(3) {
+    background:
+      linear-gradient(180deg, rgba(223, 160, 120, 0.1), transparent 28%),
+      var(--panel);
+  }
+  .column h3 {
+    font-size: 34px;
+    margin-top: 10px;
+  }
+  .mini-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 18px;
+  }
+  .mini-grid img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 14px;
+    display: block;
+  }
+  .mini-grid img:nth-child(1) { transform: rotate(-2deg); }
+  .mini-grid img:nth-child(2) { transform: rotate(2deg); }
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+  }
+  .portfolio-card img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+  }
+  .portfolio-copy {
+    padding: 18px;
+  }
+  .portfolio-card:nth-child(1) .portfolio-copy { background: rgba(223, 160, 120, 0.1); }
+  .portfolio-card:nth-child(2) .portfolio-copy { background: rgba(122, 79, 75, 0.08); }
+  .portfolio-card:nth-child(3) .portfolio-copy { background: rgba(100, 137, 110, 0.1); }
+  .portfolio-copy h3 {
+    font-size: 30px;
+    margin-top: 8px;
+  }
+  .footer {
+    margin-top: 42px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 14px;
+  }
+  @media (max-width: 980px) {
+    .hero-panel, .triple, .portfolio-grid { grid-template-columns: 1fr; }
+    .hero-panel img { min-height: 420px; }
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div>
+        <div class="eyebrow">High-End Series</div>
+        <h1 class="brand">Cat Bassett Designs</h1>
+      </div>
+      <div class="pill-row">
+        <a class="pill" href="../index.html">Current Site</a>
+        <a class="pill" href="../concepts/index.html">All Concepts</a>
+      </div>
+    </header>
+
+    <div class="nav">
+      <div class="eyebrow">New Premium Directions</div>
+      <div class="pill-row">
+        <a class="pill" href="../concept-atelier-journal/index.html">Atelier Journal</a>
+        <a class="pill" href="../concept-maison-gallery/index.html">Maison Gallery</a>
+        <a class="pill active" href="../concept-signature-house/index.html">Signature House</a>
+      </div>
+    </div>
+
+    <section class="hero">
+      <div class="hero-panel">
+        <div class="hero-copy">
+          <div class="eyebrow">A complete designer home</div>
+          <h1>One signature space for Cat’s world.</h1>
+          <p>
+            This concept is the most balanced of the three. It gives equal weight to Cat’s story,
+            her current creative activity, and a strong portfolio framework, making it feel like a
+            long-term studio home rather than just a portfolio refresh.
+          </p>
+        </div>
+        <img src="../assets/images/2021/02/my-photo-image.png" alt="Portrait of Cat Bassett">
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Homepage Logic</div>
+          <h2>Story, studio table, then portfolio.</h2>
+        </div>
+        <p>
+          The sequencing here is very deliberate. Visitors meet Cat first, see evidence of an active
+          creative practice second, and then move into the more structured archive of finished work.
+        </p>
+      </div>
+      <div class="triple">
+        <div class="column">
+          <div class="eyebrow">Story</div>
+          <h3>About the designer</h3>
+          <p>A richer introduction, selected biography, and a more authored explanation of Cat’s taste and range.</p>
+        </div>
+        <div class="column">
+          <div class="eyebrow">Studio Table</div>
+          <h3>Work in progress</h3>
+          <p>A dedicated place for fresh experiments, small updates, or new ideas without needing a full blog structure.</p>
+          <div class="mini-grid">
+            <img src="../assets/images/2022/10/printlace1.png" alt="WIP 1">
+            <img src="../assets/images/2022/10/printskin2.png" alt="WIP 2">
+          </div>
+        </div>
+        <div class="column">
+          <div class="eyebrow">Archive</div>
+          <h3>Portfolio area</h3>
+          <p>A direct route into the finished body of work, kept separate enough that serious browsing remains easy.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Portfolio</div>
+          <h2>A clear and structured archive of finished work.</h2>
+        </div>
+        <p>
+          This section keeps the commercial side strong. Even with more storytelling on the homepage,
+          the portfolio still reads as serious, organised, and easy to navigate.
+        </p>
+      </div>
+      <div class="portfolio-grid">
+        <a class="portfolio-card" href="../athleisure/index.html">
+          <img src="../assets/images/2026/05/gemini_generated_image_5pl4md5pl4md5pl4.png" alt="athleisure">
+          <div class="portfolio-copy">
+            <div class="eyebrow">Archive</div>
+            <h3>athleisure</h3>
+            <p>Commercial application-led work shown within a stronger overall studio identity.</p>
+          </div>
+        </a>
+        <a class="portfolio-card" href="../graphics/index.html">
+          <img src="../assets/images/2026/05/graphics-hero.png" alt="Graphics">
+          <div class="portfolio-copy">
+            <div class="eyebrow">Archive</div>
+            <h3>Graphics</h3>
+            <p>Graphic categories and placements with a clean and premium browsing structure.</p>
+          </div>
+        </a>
+        <a class="portfolio-card" href="../kids/index.html">
+          <img src="../assets/images/2026/05/kids-hero.png" alt="Kids">
+          <div class="portfolio-copy">
+            <div class="eyebrow">Archive</div>
+            <h3>Kids</h3>
+            <p>Playful work still treated with the same seriousness and polish as the rest of the site.</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <div class="footer">
+      <span>Concept 9: Signature House</span>
+      <span>The most balanced long-term studio home of the new premium set.</span>
+    </div>
+  </div>
+</body>
+</html>
