@@ -45,12 +45,12 @@ const portfolioCards = [
 
 const portfolioPages = {
   prints: {
-    eyebrow: "Print Portfolio",
+    eyebrow: "Prints",
     title: "Print collections shaped by hand painting, repeat design and colour storytelling.",
     intro:
-      "A broad mix of florals, decorative repeats, conversational layouts, patchworks, woodcuts and colour-led surface design built for fashion, lifestyle and special product.",
+      "Florals, decorative repeats, conversational layouts, patchworks, woodcuts and colour-led surface design for fashion, lifestyle and special product.",
     heroImage: "assets/images/2021/02/instagram-page.jpg",
-    note: "Selected work spanning painted florals, decorative repeats, patchwork ideas and market-ready print boards.",
+    note: "Painted florals, decorative repeats, patchwork ideas and market-ready print boards.",
     stats: [
       ["All-over", "repeat and placement development"],
       ["Painterly", "hand-led and digitally resolved"],
@@ -60,17 +60,12 @@ const portfolioPages = {
       {
         eyebrow: "Direction",
         title: "Decorative, floral and narrative print.",
-        text: "This section shows the breadth of Cat's print language, from soft painterly florals through to bolder conversational and graphic repeat stories."
+        text: "From soft painterly florals through to bolder conversational and graphic repeat stories."
       },
       {
         eyebrow: "Process",
         title: "Hand-drawn origins with commercial finish.",
         text: "Artwork begins with drawing, painting and motif building, then moves into repeat, balance, colour and scale refinements for collection use."
-      },
-      {
-        eyebrow: "Studio Note",
-        title: "More recent seasonal edits can slot in here easily.",
-        text: "The structure leaves room for future additions, tighter seasonal capsules or market-specific print edits without reworking the whole page."
       }
     ],
     images: [
@@ -140,12 +135,12 @@ const portfolioPages = {
     ]
   },
   embroideries: {
-    eyebrow: "Embroidery Portfolio",
+    eyebrow: "Embroideries",
     title: "Embroidery and surface design with placement, embellishment and luxury detail.",
     intro:
-      "A concentrated view of Cat's embroidery language, from motif-led placements to densely worked decorative surfaces developed for fashion collections and studio clients.",
+      "From motif-led placements to densely worked decorative surfaces developed for fashion collections and studio clients.",
     heroImage: "assets/images/2021/02/embroidery-web-page.png",
-    note: "A studio archive of embellished surfaces, motif studies and statement placements.",
+    note: "Embellished surfaces, motif studies and statement placements.",
     stats: [
       ["Placement", "motif and embroidery direction"],
       ["Luxury", "surface and embellishment detail"],
@@ -161,11 +156,6 @@ const portfolioPages = {
         eyebrow: "Application",
         title: "Built for garment impact.",
         text: "The work spans all-over surface thinking, borders, statement placements and embroidery-led artwork developed with garment application in mind."
-      },
-      {
-        eyebrow: "Studio Note",
-        title: "A useful place for future close-ups and sampling detail.",
-        text: "If Cat wants to add swatches, stitch references or strike-off notes later, this page already has room to expand gracefully."
       }
     ],
     images: [
@@ -201,16 +191,16 @@ const portfolioPages = {
     ]
   },
   interiors: {
-    eyebrow: "Interiors Portfolio",
+    eyebrow: "Interiors",
     title: "Print translated into interiors, home product and atmospheric room settings.",
     intro:
-      "A portfolio of artwork applied across bedding, cushions, wall pieces and decorative interior mockups, showing how Cat's surface language moves beyond fashion into lifestyle use.",
+      "Artwork applied across bedding, cushions, wall pieces and decorative interior settings, moving the surface language beyond fashion into lifestyle use.",
     heroImage: "assets/images/2021/03/design-01ked4begc-1767820078.png",
-    note: "Interior applications show scale, mood and product context for the print work.",
+    note: "Scale, mood and product context across interior applications.",
     stats: [
       ["Lifestyle", "home and decorative application"],
       ["Pattern", "artwork scaled for interior use"],
-      ["Visualised", "mockups and atmospheric settings"]
+      ["Visualised", "interior settings and atmosphere"]
     ],
     cards: [
       {
@@ -221,12 +211,7 @@ const portfolioPages = {
       {
         eyebrow: "Application",
         title: "From bedding to wall art.",
-        text: "The page mixes bedding, cushion, framed print and statement decor mockups so the portfolio reads as a wider lifestyle offer."
-      },
-      {
-        eyebrow: "Studio Note",
-        title: "Ready for capsule edits or client-specific curation.",
-        text: "A tighter edit for licensing, interiors brands or home product pitches can be dropped into this layout without losing the overall feel."
+        text: "Bedding, cushions, framed print and statement decor show how the artwork extends into a broader lifestyle offer."
       }
     ],
     images: [
@@ -253,12 +238,12 @@ const portfolioPages = {
     ]
   },
   athleisure: {
-    eyebrow: "Athleisure Portfolio",
+    eyebrow: "Athleisure",
     title: "Application-led print adapted for active, athleisure and crossover lifestyle product.",
     intro:
-      "A range of prints shown in context on leggings, coordinates and sportswear silhouettes, highlighting how Cat's artwork performs across fitted, repeat-led commercial product.",
+      "Prints shown on leggings, coordinates and sportswear silhouettes, highlighting how the artwork performs across fitted, repeat-led commercial product.",
     heroImage: "assets/images/2026/05/gemini_generated_image_5pl4md5pl4md5pl4.png",
-    note: "This section can evolve into a stronger crossover category as more fashion-adjacent work is added.",
+    note: "Print in context across active, athleisure and crossover lifestyle product.",
     stats: [
       ["Active", "repeat and placement application"],
       ["Commercial", "product-led visualisation"],
@@ -273,12 +258,7 @@ const portfolioPages = {
       {
         eyebrow: "Application",
         title: "From leggings to matching sets.",
-        text: "The portfolio shows how surface design translates onto high-stretch and active silhouettes with clarity and energy."
-      },
-      {
-        eyebrow: "Studio Note",
-        title: "A useful holding space for category experiments.",
-        text: "If Cat wants to test resort, swim or capsule sportswear ideas later, this page already gives them a natural home."
+        text: "Surface design translated onto high-stretch and active silhouettes with clarity and energy."
       }
     ],
     images: [
@@ -304,12 +284,12 @@ const portfolioPages = {
     ]
   },
   graphics: {
-    eyebrow: "Graphics Portfolio",
+    eyebrow: "Graphics",
     title: "Placement graphics and illustrated artwork with wit, clarity and commercial polish.",
     intro:
-      "A focused selection of slogan, motif and graphic placements spanning food, floral, seasonal and destination themes, designed to feel expressive while staying product-ready.",
+      "Slogan, motif and graphic placements spanning food, floral, seasonal and destination themes, expressive while staying product-ready.",
     heroImage: "assets/images/2026/05/graphics-hero.png",
-    note: "This category reads as a fresher, more immediate companion to the print and conversational work.",
+    note: "Placement graphics, slogans and illustrated artwork with personality.",
     stats: [
       ["Placement", "graphic and slogan-led artwork"],
       ["Seasonal", "capsule and trend-aware themes"],
@@ -324,12 +304,7 @@ const portfolioPages = {
       {
         eyebrow: "Application",
         title: "T-shirt, sweat and casual product territory.",
-        text: "The work is shown as finished presentation boards, making it easy to imagine in fast-paced studio or supplier conversations."
-      },
-      {
-        eyebrow: "Studio Note",
-        title: "A natural space for work in progress drops.",
-        text: "New slogans, mini themed capsules or current market experiments can be added in small batches without disrupting the page."
+        text: "Graphic ideas developed for T-shirt, sweat and casual product, balancing attitude, clarity and a strong visual hook."
       }
     ],
     images: [
@@ -355,12 +330,12 @@ const portfolioPages = {
     ]
   },
   conversational: {
-    eyebrow: "Conversational Portfolio",
+    eyebrow: "Conversational",
     title: "Narrative surface design full of motifs, character and illustrated storytelling.",
     intro:
-      "A lively edit of conversational repeats and placement-led illustrations featuring birds, boats, florals and whimsical scenes with plenty of surface personality.",
+      "Conversational repeats and placement-led illustrations featuring birds, boats, florals and whimsical scenes with plenty of surface personality.",
     heroImage: "assets/images/2022/10/printbird2.png",
-    note: "These artworks sit between illustration and repeat print, with strong personality across every surface.",
+    note: "Illustration and repeat print with strong personality across every surface.",
     stats: [
       ["Illustrative", "narrative and motif-rich design"],
       ["Repeat-ready", "surface stories built for product"],
@@ -376,11 +351,6 @@ const portfolioPages = {
         eyebrow: "Application",
         title: "Ideal for standout print categories.",
         text: "The category lends itself to dresses, blouses, scarves, kids and lifestyle applications where personality matters."
-      },
-      {
-        eyebrow: "Studio Note",
-        title: "Future themed capsules can land here easily.",
-        text: "Seasonal mini stories, travel themes or brand-specific narrative directions can be added as contained edits over time."
       }
     ],
     images: [
@@ -410,12 +380,12 @@ const portfolioPages = {
     ]
   },
   kids: {
-    eyebrow: "Kids Portfolio",
+    eyebrow: "Kids",
     title: "Playful prints and graphics built around colour, character and seasonal storytelling.",
     intro:
-      "A cheerful category of placements, all-over print and themed boards for kidswear, showing how Cat's illustration and graphic language can shift into younger, more playful markets.",
+      "Placements, all-over print and themed boards for kidswear, showing how the illustration and graphic language shifts into younger, more playful markets.",
     heroImage: "assets/images/2026/05/kids-hero.png",
-    note: "This page already feels like a strong extension of the graphics and conversational work.",
+    note: "Playful print and graphics with warmth, colour and character.",
     stats: [
       ["Playful", "character and motif-led print"],
       ["Seasonal", "graphic stories for kidswear"],
@@ -431,11 +401,6 @@ const portfolioPages = {
         eyebrow: "Application",
         title: "Print, placement and themed capsules.",
         text: "These boards show how the work can move across multiple kidswear categories while staying recognisable and cohesive."
-      },
-      {
-        eyebrow: "Studio Note",
-        title: "Space for future babywear or gifting stories.",
-        text: "If Cat wants to expand this area later, the same layout could easily hold softer baby, nursery or holiday capsule directions."
       }
     ],
     images: [
@@ -469,10 +434,9 @@ const aboutPage = {
   intro:
     "Cat Bassett is a London-based Senior Print & Embroidery Designer with extensive experience across fashion textiles, placement graphics, all-over print, embroidery, CAD development and international studio leadership.",
   heroImage: "assets/images/2021/02/my-photo-image.png",
-  note: "BA Printed Textile Design, Central Saint Martins. Portfolio and studio work spanning UK, US and international markets.",
+  note: "BA Printed Textile Design, Central Saint Martins. Studio work spanning UK, US and international markets.",
   stats: [
     ["16 years", "Tom Cody studio leadership"],
-    ["60%", "personal design sell rate"],
     ["London", "print and embroidery practice"]
   ],
   cards: [
@@ -488,8 +452,8 @@ const aboutPage = {
     },
     {
       eyebrow: "Current View",
-      title: "Open to higher-end and creatively rich roles.",
-      text: "This site is positioned to show both commercial fluency and a more elevated studio sensibility, giving Cat room to tell a fuller story about her work."
+      title: "Drawn to thoughtful, design-led studios.",
+      text: "Particularly strong in environments that value hand-crafted development, refined colour, surface richness and a clear point of view."
     }
   ],
   timeline: [
@@ -536,7 +500,7 @@ function assetUrl(path) {
 function topNav(active) {
   return `
     <div class="link-row">
-      <a class="pill ${active === "home" ? "is-active" : ""}" href="${siteUrl("home")}">Portfolio Home</a>
+      <a class="pill ${active === "home" ? "is-active" : ""}" href="${siteUrl("home")}">Home</a>
       <a class="pill ${active === "about" ? "is-active" : ""}" href="${siteUrl("about")}">About</a>
     </div>
   `;
@@ -563,7 +527,7 @@ function portfolioGrid(active) {
             <a class="portfolio-card" href="${siteUrl(card.slug)}">
               <img src="${assetUrl(card.image)}" alt="${card.title}">
               <div class="portfolio-copy">
-                <div class="eyebrow">Portfolio</div>
+                <div class="eyebrow">Collection</div>
                 <h3>${card.title}</h3>
                 <p>${card.description}</p>
               </div>
@@ -579,7 +543,7 @@ function portfolioGrid(active) {
               <div class="portfolio-copy">
                 <div class="eyebrow">Profile</div>
                 <h3>About</h3>
-                <p>Background, contact details and a fuller view of Cat's experience.</p>
+                <p>Background and contact details</p>
               </div>
             </a>
           `
@@ -602,9 +566,9 @@ function renderPageFrame(active, eyebrow) {
   `;
 }
 
-function renderMetaCards(cards) {
+function renderMetaCards(cards, className = "") {
   return `
-    <div class="meta-grid">
+    <div class="meta-grid${className ? ` ${className}` : ""}">
       ${cards
         .map(
           (card) => `
@@ -668,7 +632,24 @@ function renderFooter() {
   return `
     <div class="footer-row">
       <span>Cat Bassett Designs</span>
-      <span>London-based print and embroidery portfolio</span>
+      <span>London-based print and embroidery design</span>
+    </div>
+  `;
+}
+
+function renderContactRows(rows) {
+  return `
+    <div class="contact-table">
+      ${rows
+        .map(
+          (row) => `
+            <div class="contact-row">
+              <div class="contact-label">${row.label}</div>
+              <div class="contact-value">${row.value}</div>
+            </div>
+          `
+        )
+        .join("")}
     </div>
   `;
 }
@@ -683,10 +664,10 @@ function renderPortfolioPage(slug) {
       <div class="section-head">
         <div>
           <div class="eyebrow">Overview</div>
-          <h2>How this body of work fits the wider portfolio.</h2>
+          <h2>A closer view of the work.</h2>
         </div>
       </div>
-      ${renderMetaCards(data.cards)}
+      ${renderMetaCards(data.cards, "meta-grid--two")}
     </section>
     <section>
       <div class="section-head">
@@ -694,7 +675,6 @@ function renderPortfolioPage(slug) {
           <div class="eyebrow">Gallery</div>
           <h2>Selected work.</h2>
         </div>
-        <p>A scrolling archive of portfolio boards, mockups and developed artwork collected into one cleaner presentation.</p>
       </div>
       ${renderGallery(slug, data.images)}
     </section>
@@ -702,7 +682,7 @@ function renderPortfolioPage(slug) {
       <div class="section-head">
         <div>
           <div class="eyebrow">Explore More</div>
-          <h2>Browse the rest of the portfolio.</h2>
+          <h2>More collections.</h2>
         </div>
       </div>
       ${portfolioGrid(slug)}
@@ -731,7 +711,6 @@ function renderAboutPage() {
           <div class="eyebrow">Experience</div>
           <h2>Selected career highlights.</h2>
         </div>
-        <p>A concise view of the studio leadership, freelance and supplier-side work that underpins the portfolio.</p>
       </div>
       <div class="timeline">
         ${aboutPage.timeline
@@ -750,28 +729,14 @@ function renderAboutPage() {
       <div class="section-head">
         <div>
           <div class="eyebrow">Contact</div>
-          <h2>Links and next steps.</h2>
+          <h2>Contact and links.</h2>
         </div>
       </div>
-      <div class="contact-grid">
-        <div class="contact-card">
-          <div class="eyebrow">Get In Touch</div>
-          <h3>Open to conversations about print, embroidery and studio roles.</h3>
-          <p>This page can stay as the core introduction while the portfolio pages continue to evolve around it.</p>
-          <div class="contact-list">
-            <a class="contact-line" href="mailto:cat@catbassett.co.uk">cat@catbassett.co.uk</a>
-            <a class="contact-line" href="https://www.linkedin.com/in/cat-bassett-6244b3113/">LinkedIn profile</a>
-            <a class="contact-line" href="https://www.instagram.com/catbassettdesigns/">Instagram</a>
-            <div class="contact-line">Journal / new work updates can be added here later.</div>
-          </div>
-        </div>
-        <div class="contact-card">
-          <div class="eyebrow">Portfolio Access</div>
-          <h3>Everything linked from one place.</h3>
-          <p>The whole portfolio remains easy to browse while leaving room for future process notes, current work and more personal storytelling.</p>
-          ${portfolioGrid("about")}
-        </div>
-      </div>
+      ${renderContactRows([
+        { label: "Email", value: '<a href="mailto:cat@catbassett.co.uk">cat@catbassett.co.uk</a>' },
+        { label: "LinkedIn", value: '<a href="https://www.linkedin.com/in/cat-bassett-6244b3113/" target="_blank" rel="noreferrer">linkedin.com/in/cat-bassett-6244b3113</a>' },
+        { label: "Instagram", value: '<a href="https://www.instagram.com/catbassettdesigns/" target="_blank" rel="noreferrer">@catbassettdesigns</a>' }
+      ])}
     </section>
     ${renderFooter()}
   `;
