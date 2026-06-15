@@ -3,350 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Concept: Studio Profile</title>
-<style>
-  :root {
-    --bg: #f3f0ea;
-    --ink: #171816;
-    --muted: #62665f;
-    --forest: #2f463d;
-    --sand: #d9d4c7;
-    --rose: #b87572;
-    --panel: rgba(255, 255, 255, 0.82);
-    --line: rgba(23, 24, 22, 0.12);
-    --shadow: 0 18px 34px rgba(34, 37, 33, 0.09);
-  }
-
-  * { box-sizing: border-box; }
-
-  body {
-    margin: 0;
-    font-family: "Lato", "Helvetica Neue", sans-serif;
-    color: var(--ink);
-    background:
-      radial-gradient(circle at top left, rgba(184, 117, 114, 0.12), transparent 22rem),
-      linear-gradient(180deg, rgba(47, 70, 61, 0.06), transparent 20rem),
-      linear-gradient(180deg, #faf8f3 0%, var(--bg) 100%);
-  }
-
-  a { color: inherit; text-decoration: none; }
-
-  .page {
-    width: min(1240px, calc(100% - 28px));
-    margin: 0 auto;
-    padding: 22px 0 36px;
-  }
-
-  .topbar,
-  .hero-grid,
-  .meta-grid,
-  .wip-grid,
-  .portfolio-grid,
-  .footer-row {
-    display: grid;
-    gap: 16px;
-  }
-
-  .topbar {
-    grid-template-columns: 1fr auto;
-    align-items: center;
-  }
-
-  .eyebrow {
-    text-transform: uppercase;
-    letter-spacing: 0.16em;
-    font-size: 11px;
-    color: var(--muted);
-  }
-
-  h1, h2, h3, p { margin: 0; }
-
-  h1, h2, h3 {
-    font-family: "Lato", "Helvetica Neue", sans-serif;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-  }
-
-  .brand-name {
-    font-size: clamp(28px, 4vw, 42px);
-    font-weight: 700;
-    letter-spacing: -0.03em;
-  }
-
-  .link-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .pill {
-    padding: 10px 14px;
-    border-radius: 999px;
-    border: 1px solid var(--line);
-    background: rgba(255, 255, 255, 0.72);
-    font-size: 13px;
-  }
-
-  .hero-grid {
-    grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
-    align-items: stretch;
-    margin-top: 18px;
-  }
-
-  .hero-copy,
-  .hero-image,
-  .meta-card,
-  .wip-card,
-  .portfolio-card {
-    background: var(--panel);
-    border-radius: 28px;
-    overflow: hidden;
-    box-shadow: var(--shadow);
-  }
-
-  .hero-copy {
-    padding: 22px 24px;
-    background:
-      linear-gradient(180deg, rgba(184, 117, 114, 0.08), transparent 32%),
-      var(--panel);
-  }
-
-  h1 {
-    font-size: clamp(27px, 3vw, 34px);
-    line-height: 1.05;
-    margin-top: 8px;
-    max-width: 16ch;
-  }
-
-  .hero-copy p,
-  .meta-card p,
-  .wip-card p,
-  .portfolio-copy p {
-    margin-top: 12px;
-    color: var(--muted);
-    line-height: 1.62;
-    font-size: 16px;
-  }
-
-  .hero-stats {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 16px;
-  }
-
-  .stat {
-    padding: 10px 12px;
-    border-radius: 16px;
-    background: rgba(255,255,255,0.75);
-    border: 1px solid rgba(23,24,22,0.08);
-    min-width: 120px;
-  }
-
-  .stat strong {
-    display: block;
-    font-size: 18px;
-    font-family: "Lato", "Helvetica Neue", sans-serif;
-    font-weight: 700;
-  }
-
-  .stat span {
-    display: block;
-    margin-top: 2px;
-    color: var(--muted);
-    font-size: 13px;
-  }
-
-  .hero-image {
-    min-height: 220px;
-    position: relative;
-  }
-
-  .hero-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  .hero-note {
-    position: absolute;
-    left: 16px;
-    bottom: 16px;
-    max-width: 260px;
-    padding: 12px 14px;
-    border-radius: 16px;
-    background: rgba(23, 24, 22, 0.74);
-    color: #fff;
-    font-size: 13px;
-    line-height: 1.5;
-  }
-
-  section { margin-top: 26px; }
-
-  .section-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: end;
-    gap: 16px;
-    flex-wrap: wrap;
-    margin-bottom: 12px;
-  }
-
-  .section-head h2 {
-    font-size: clamp(24px, 3vw, 32px);
-  }
-
-  .section-head p {
-    max-width: 32rem;
-    color: var(--muted);
-    line-height: 1.58;
-    font-size: 15px;
-    margin: 0;
-  }
-
-  .meta-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .meta-card {
-    padding: 20px;
-  }
-
-  .meta-card h3 {
-    font-size: 24px;
-    margin-top: 8px;
-    line-height: 1.08;
-  }
-
-  .mini-list {
-    display: grid;
-    gap: 8px;
-    margin-top: 12px;
-    padding-left: 18px;
-    color: var(--muted);
-    font-size: 14px;
-    line-height: 1.45;
-  }
-
-  .wip-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .wip-card {
-    display: grid;
-    grid-template-columns: 96px 1fr;
-    gap: 14px;
-    padding: 12px;
-    align-items: center;
-  }
-
-  .wip-card img {
-    width: 96px;
-    height: 96px;
-    object-fit: cover;
-    border-radius: 16px;
-    display: block;
-  }
-
-  .wip-card h3 {
-    font-size: 21px;
-    line-height: 1.08;
-  }
-
-  .portfolio-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
-  .portfolio-card img {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    display: block;
-  }
-
-  .portfolio-copy {
-    padding: 12px 14px 14px;
-  }
-
-  .portfolio-copy h3 {
-    font-size: 20px;
-    margin-top: 6px;
-    line-height: 1.08;
-  }
-
-  .portfolio-copy p {
-    margin-top: 8px;
-    font-size: 13px;
-    line-height: 1.45;
-  }
-
-  .footer-row {
-    grid-template-columns: 1fr auto;
-    align-items: center;
-    margin-top: 24px;
-    padding-top: 14px;
-    border-top: 1px solid var(--line);
-    color: var(--muted);
-    font-size: 13px;
-  }
-
-  @media (max-width: 1100px) {
-    .hero-grid,
-    .meta-grid,
-    .wip-grid,
-    .portfolio-grid,
-    .footer-row {
-      grid-template-columns: 1fr;
-    }
-
-    .portfolio-grid {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-
-  @media (max-width: 720px) {
-    .page {
-      width: min(100% - 18px, 1240px);
-      padding-bottom: 28px;
-    }
-
-    .topbar {
-      grid-template-columns: 1fr;
-    }
-
-    .wip-card {
-      grid-template-columns: 80px 1fr;
-    }
-
-    .wip-card img {
-      width: 80px;
-      height: 80px;
-    }
-
-    .portfolio-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-</style>
+<title>Cat Bassett Designs</title>
+<meta name="description" content="Cat Bassett Designs portfolio site featuring print, embroidery, graphics, interiors, conversational work, kids and athleisure.">
+<link rel="stylesheet" href="site.css">
 </head>
-<body>
+<body data-page="home" data-asset-root=".." data-site-root=".">
   <div class="page">
     <header class="topbar">
       <div>
-        <div class="eyebrow">Studio Profile Concept</div>
+        <div class="eyebrow">Studio Profile</div>
         <div class="brand-name">Cat Bassett Designs</div>
       </div>
       <div class="link-row">
-        <a class="pill" href="../index.html">Current Site</a>
-        <a class="pill" href="../concept-studio-hybrid/index.html">Studio Hybrid</a>
-        <a class="pill" href="../concepts/index.html">All Concepts</a>
+        <a class="pill is-active" href="index.html">Portfolio Home</a>
+        <a class="pill" href="about/index.html">About</a>
       </div>
     </header>
 
+    <div class="subnav">
+      <a class="pill" href="prints/index.html">Prints</a>
+      <a class="pill" href="embroideries/index.html">Embroideries</a>
+      <a class="pill" href="interiors/index.html">Interiors</a>
+      <a class="pill" href="athleisure/index.html">athleisure</a>
+      <a class="pill" href="graphics/index.html">Graphics</a>
+      <a class="pill" href="conversational/index.html">Conversational</a>
+      <a class="pill" href="kids/index.html">Kids</a>
+    </div>
+
     <section class="hero-grid">
       <div class="hero-copy">
-          <div class="eyebrow">Senior Print &amp; Embroidery Designer</div>
+        <div class="eyebrow">Senior Print &amp; Embroidery Designer</div>
         <h1>Senior print and embroidery design shaped by studio craft and commercial clarity.</h1>
         <p>
           Senior Print &amp; Embroidery Designer with extensive experience across fashion textiles,
@@ -367,9 +53,6 @@
       </div>
       <div class="hero-image">
         <img src="../assets/images/2021/02/my-photo-image.png" alt="Portrait of Cat Bassett">
-        <!-- <div class="hero-note">
-          London rooftops are my home
-        </div> -->
       </div>
     </section>
 
@@ -485,7 +168,7 @@
         </div>
       </div>
       <div class="portfolio-grid">
-        <a class="portfolio-card" href="../prints/index.html">
+        <a class="portfolio-card" href="prints/index.html">
           <img src="../assets/images/2021/02/instagram-page.jpg" alt="Prints">
           <div class="portfolio-copy">
             <div class="eyebrow">Portfolio</div>
@@ -493,7 +176,7 @@
             <p>Painterly florals, decorative repeats and more elevated print collections.</p>
           </div>
         </a>
-        <a class="portfolio-card" href="../embroideries/index.html">
+        <a class="portfolio-card" href="embroideries/index.html">
           <img src="../assets/images/2021/02/embroidery-web-page.png" alt="Embroideries">
           <div class="portfolio-copy">
             <div class="eyebrow">Portfolio</div>
@@ -501,7 +184,7 @@
             <p>Placement and motif-driven embroidery with a stronger luxury and craft sensibility.</p>
           </div>
         </a>
-        <a class="portfolio-card" href="../interiors/index.html">
+        <a class="portfolio-card" href="interiors/index.html">
           <img src="../assets/images/2021/03/design-01ked4begc-1767820078.png" alt="Interiors">
           <div class="portfolio-copy">
             <div class="eyebrow">Portfolio</div>
@@ -509,7 +192,7 @@
             <p>Print and artwork translated into more atmospheric, lifestyle-led interior settings.</p>
           </div>
         </a>
-        <a class="portfolio-card" href="../athleisure/index.html">
+        <a class="portfolio-card" href="athleisure/index.html">
           <img src="../assets/images/2026/05/gemini_generated_image_5pl4md5pl4md5pl4.png" alt="athleisure">
           <div class="portfolio-copy">
             <div class="eyebrow">Portfolio</div>
@@ -517,7 +200,7 @@
             <p>Application-led print development showing versatility across broader fashion categories.</p>
           </div>
         </a>
-        <a class="portfolio-card" href="../graphics/index.html">
+        <a class="portfolio-card" href="graphics/index.html">
           <img src="../assets/images/2026/05/graphics-hero.png" alt="Graphics">
           <div class="portfolio-copy">
             <div class="eyebrow">Portfolio</div>
@@ -525,7 +208,7 @@
             <p>Placement graphics and motifs developed with clarity, style and commercial polish.</p>
           </div>
         </a>
-        <a class="portfolio-card" href="../conversational/index.html">
+        <a class="portfolio-card" href="conversational/index.html">
           <img src="../assets/images/2022/10/printbird2.png" alt="Conversational">
           <div class="portfolio-copy">
             <div class="eyebrow">Portfolio</div>
@@ -533,7 +216,7 @@
             <p>Illustrative and narrative surface design with personality, charm and repeat potential.</p>
           </div>
         </a>
-        <a class="portfolio-card" href="../kids/index.html">
+        <a class="portfolio-card" href="kids/index.html">
           <img src="../assets/images/2026/05/kids-hero.png" alt="Kids">
           <div class="portfolio-copy">
             <div class="eyebrow">Portfolio</div>
@@ -541,7 +224,7 @@
             <p>Playful print and graphic work with warmth, clarity and strong seasonal storytelling.</p>
           </div>
         </a>
-        <a class="portfolio-card" href="../about/index.html">
+        <a class="portfolio-card" href="about/index.html">
           <img src="../assets/images/2021/02/my-photo-image.png" alt="About">
           <div class="portfolio-copy">
             <div class="eyebrow">Contact</div>
@@ -553,8 +236,8 @@
     </section>
 
     <div class="footer-row">
-      <span>Concept: Studio Profile</span>
-      <span>A tighter, CV-led evolution of the Studio Hybrid direction.</span>
+      <span>Cat Bassett Designs</span>
+      <span>Studio profile portfolio</span>
     </div>
   </div>
 </body>
