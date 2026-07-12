@@ -43,6 +43,19 @@ const portfolioCards = [
   }
 ];
 
+const previewImageOverrides = {
+  trend: "collection-preview/assets/images/trend-summer2627.png",
+  graphics: "collection-preview/assets/images/graphics.png",
+  kids: "collection-preview/assets/images/kids.png"
+};
+
+const previewTrendCard = {
+  slug: "trend",
+  title: "Trend",
+  description: "Seasonal womenswear direction, colour and graphic research.",
+  image: "collection-preview/assets/images/trend-summer2627.png"
+};
+
 const portfolioPages = {
   prints: {
     eyebrow: "Prints",
@@ -497,7 +510,27 @@ function assetUrl(path) {
   return joinPath(assetRoot, path);
 }
 
+function usesPreviewNavigation() {
+  return document.body.dataset.previewNavigation === "true";
+}
+
+function imageForCurrentSite(slug, fallback) {
+  return usesPreviewNavigation() && previewImageOverrides[slug] ? previewImageOverrides[slug] : fallback;
+}
+
+function currentPortfolioCards() {
+  return usesPreviewNavigation() ? [previewTrendCard, ...portfolioCards] : portfolioCards;
+}
+
 function topNav(active) {
+  if (usesPreviewNavigation()) {
+    return `
+      <div class="link-row">
+        <a class="pill ${active === "about" ? "is-active" : ""}" href="${siteUrl("about")}">About</a>
+      </div>
+    `;
+  }
+
   return `
     <div class="link-row">
       <a class="pill ${active === "home" ? "is-active" : ""}" href="${siteUrl("home")}">Home</a>
@@ -507,9 +540,14 @@ function topNav(active) {
 }
 
 function subNav(active) {
+  const homeLink = usesPreviewNavigation()
+    ? `<a class="pill ${active === "home" ? "is-active" : ""}" href="${siteUrl("home")}">Home</a>`
+    : "";
+
   return `
     <div class="subnav">
-      ${portfolioCards
+      ${homeLink}
+      ${currentPortfolioCards()
         .map(
           (card) => `<a class="pill ${active === card.slug ? "is-active" : ""}" href="${siteUrl(card.slug)}">${card.title}</a>`
         )
@@ -521,11 +559,11 @@ function subNav(active) {
 function portfolioGrid(active) {
   return `
     <div class="portfolio-grid">
-      ${portfolioCards
+      ${currentPortfolioCards()
         .map(
           (card) => `
             <a class="portfolio-card" href="${siteUrl(card.slug)}">
-              <img src="${assetUrl(card.image)}" alt="${card.title}">
+              <img src="${assetUrl(imageForCurrentSite(card.slug, card.image))}" alt="${card.title}">
               <div class="portfolio-copy">
                 <div class="eyebrow">Collection</div>
                 <h3>${card.title}</h3>
@@ -585,6 +623,7 @@ function renderMetaCards(cards, className = "") {
 }
 
 function renderHero(data) {
+  const heroImage = imageForCurrentSite(data.eyebrow.toLowerCase(), data.heroImage);
   return `
     <section class="hero-grid">
       <div class="hero-copy">
@@ -605,7 +644,7 @@ function renderHero(data) {
         </div>
       </div>
       <div class="hero-image">
-        <img src="${assetUrl(data.heroImage)}" alt="${data.eyebrow}">
+        <img src="${assetUrl(heroImage)}" alt="${data.eyebrow}">
         <div class="hero-note">${data.note}</div>
       </div>
     </section>

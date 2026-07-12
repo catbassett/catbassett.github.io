@@ -1,2 +1,5 @@
 .DS_Store
 .claude/
+dist/
+dist-production/
+collection-preview/assets/pdfs/
