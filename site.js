@@ -619,13 +619,76 @@ function renderGallery(slug, images) {
         .map(
           (image, index) => `
             <figure class="gallery-card">
-              <img loading="lazy" src="${assetUrl(image)}" alt="${portfolioPages[slug].eyebrow} image ${index + 1}">
+              <button
+                class="gallery-trigger"
+                type="button"
+                data-lightbox-src="${assetUrl(image)}"
+                data-lightbox-alt="${portfolioPages[slug].eyebrow} image ${index + 1}"
+                aria-label="Open ${portfolioPages[slug].eyebrow} image ${index + 1} larger"
+              >
+                <img loading="lazy" src="${assetUrl(image)}" alt="${portfolioPages[slug].eyebrow} image ${index + 1}">
+              </button>
             </figure>
           `
         )
         .join("")}
     </div>
   `;
+}
+
+function renderLightbox() {
+  return `
+    <div class="lightbox" data-lightbox hidden>
+      <button class="lightbox-backdrop" type="button" aria-label="Close large image view" data-lightbox-close></button>
+      <div class="lightbox-dialog" role="dialog" aria-modal="true" aria-label="Large image view">
+        <button class="lightbox-close" type="button" aria-label="Close large image view" data-lightbox-close>&times;</button>
+        <img class="lightbox-image" src="" alt="" data-lightbox-image>
+      </div>
+    </div>
+  `;
+}
+
+function closeLightbox() {
+  const lightbox = document.querySelector("[data-lightbox]");
+  const image = document.querySelector("[data-lightbox-image]");
+  if (!lightbox || !image) return;
+
+  lightbox.hidden = true;
+  document.body.classList.remove("lightbox-open");
+  image.src = "";
+  image.alt = "";
+}
+
+function openLightbox(src, alt) {
+  const lightbox = document.querySelector("[data-lightbox]");
+  const image = document.querySelector("[data-lightbox-image]");
+  if (!lightbox || !image) return;
+
+  image.src = src;
+  image.alt = alt || "";
+  lightbox.hidden = false;
+  document.body.classList.add("lightbox-open");
+}
+
+function bindLightbox() {
+  document.addEventListener("click", (event) => {
+    const trigger = event.target.closest("[data-lightbox-src]");
+    if (trigger) {
+      openLightbox(trigger.dataset.lightboxSrc, trigger.dataset.lightboxAlt);
+      return;
+    }
+
+    const closeTrigger = event.target.closest("[data-lightbox-close]");
+    if (closeTrigger) {
+      closeLightbox();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeLightbox();
+    }
+  });
 }
 
 function renderFooter() {
@@ -687,6 +750,7 @@ function renderPortfolioPage(slug) {
       </div>
       ${portfolioGrid(slug)}
     </section>
+    ${renderLightbox()}
     ${renderFooter()}
   `;
 }
@@ -743,6 +807,7 @@ function renderAboutPage() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  bindLightbox();
   const page = document.body.dataset.page;
   if (page === "about") {
     renderAboutPage();
