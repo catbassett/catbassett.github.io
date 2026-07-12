@@ -1,0 +1,95 @@
+@import url("site.css");
+
+.collection-preview .preview-banner {
+  margin-top: 16px;
+  padding: 11px 14px;
+  border: 1px solid rgba(47, 70, 61, 0.22);
+  border-radius: 16px;
+  background: rgba(47, 70, 61, 0.08);
+  color: var(--forest);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.collection-preview .breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 20px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.collection-preview .breadcrumb a {
+  text-decoration: underline;
+  text-underline-offset: 0.16em;
+}
+
+.collection-preview .collection-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.collection-preview .collection-card {
+  display: grid;
+  gap: 0;
+  min-width: 0;
+  border-radius: 24px;
+  overflow: hidden;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.collection-preview .collection-card:hover,
+.collection-preview .collection-card:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 24px 42px rgba(34, 37, 33, 0.14);
+}
+
+.collection-preview .collection-card img {
+  width: 100%;
+  aspect-ratio: 1 / 0.86;
+  object-fit: cover;
+}
+
+.collection-preview .collection-card__copy {
+  padding: 14px 16px 17px;
+}
+
+.collection-preview .collection-card h2 {
+  margin-top: 6px;
+  font-size: 22px;
+}
+
+.collection-preview .collection-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+  gap: 16px;
+}
+
+.collection-preview .collection-gallery .gallery-card {
+  margin: 0;
+  break-inside: auto;
+}
+
+.collection-preview .collection-gallery .gallery-card img {
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 1100px) {
+  .collection-preview .collection-grid,
+  .collection-preview .collection-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .collection-preview .collection-grid,
+  .collection-preview .collection-gallery {
+    grid-template-columns: 1fr;
+  }
+}
