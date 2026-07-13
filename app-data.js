@@ -255,5 +255,23 @@ window.collectionPreviewData = {
       "assets/images/trend/05-ss27-lady-in-bloom-6.jpg",
       "assets/images/trend/05-ss27-lady-in-bloom-7.jpg"
     ]
+  },
+  "designDevelopment": {
+    "slug": "design-development",
+    "title": "Design & Development",
+    "intro": "Commercial print and graphic development across womenswear, menswear and childrenswear, from initial direction through to buyer-ready CADs and production artwork.",
+    "heroImage": "assets/images/design-development.svg",
+    "images": [
+      "assets/images/design-development/01-design-development.jpg",
+      "assets/images/design-development/02-design-development.jpg",
+      "assets/images/design-development/03-design-development.jpg",
+      "assets/images/design-development/04-design-development.jpg",
+      "assets/images/design-development/05-design-development.jpg",
+      "assets/images/design-development/06-design-development.jpg",
+      "assets/images/design-development/07-design-development.jpg",
+      "assets/images/design-development/08-design-development.jpg",
+      "assets/images/design-development/09-design-development.jpg",
+      "assets/images/design-development/10-design-development.jpg"
+    ]
   }
 };

@@ -2,14 +2,27 @@ const preview = window.collectionPreviewData;
 
 const homePortfolioCards = [
   { slug: "trend", title: "Trend", description: "Seasonal womenswear direction, colour and graphic research.", image: "assets/images/trend-summer2627.png" },
+  { slug: "design-development", title: "Design & Development", description: "Commercial print, graphics and product development from direction to production.", image: "assets/images/design-development.svg" },
   { slug: "prints", title: "Prints", description: "Painterly florals, decorative repeats and more elevated print collections.", image: "assets/images/2021/02/instagram-page.jpg" },
-  { slug: "embroideries", title: "Embroideries", description: "Placement and motif-driven embroidery with a stronger luxury and craft sensibility.", image: "assets/images/2021/02/embroidery-web-page.png" },
-  { slug: "interiors", title: "Interiors", description: "Print and artwork translated into more atmospheric, lifestyle-led interior settings.", image: "assets/images/2021/03/design-01ked4begc-1767820078.png" },
-  { slug: "athleisure", title: "athleisure", description: "Application-led print development showing versatility across broader fashion categories.", image: "assets/images/2026/05/gemini_generated_image_5pl4md5pl4md5pl4.png" },
   { slug: "graphics", title: "Graphics", description: "Placement graphics and motifs developed with clarity, style and commercial polish.", image: "assets/images/graphics.png" },
+  { slug: "athleisure", title: "athleisure", description: "Application-led print development showing versatility across broader fashion categories.", image: "assets/images/2026/05/gemini_generated_image_5pl4md5pl4md5pl4.png" },
   { slug: "conversational", title: "Conversational", description: "Illustrative and narrative surface design with personality, charm and repeat potential.", image: "assets/images/2022/10/printbird2.png" },
-  { slug: "kids", title: "Kids", description: "Playful print and graphic work with warmth, clarity and strong seasonal storytelling.", image: "assets/images/kids.png" }
+  { slug: "kids", title: "Kids", description: "Playful print and graphic work with warmth, clarity and strong seasonal storytelling.", image: "assets/images/kids.png" },
+  { slug: "embroideries", title: "Embroideries", description: "Placement and motif-driven embroidery with a stronger luxury and craft sensibility.", image: "assets/images/2021/02/embroidery-web-page.png" },
+  { slug: "interiors", title: "Interiors", description: "Print and artwork translated into more atmospheric, lifestyle-led interior settings.", image: "assets/images/2021/03/design-01ked4begc-1767820078.png" }
 ];
+
+const navigationPortfolioCards = [
+  "trend",
+  "design-development",
+  "prints",
+  "embroideries",
+  "interiors",
+  "athleisure",
+  "graphics",
+  "conversational",
+  "kids"
+].map((slug) => homePortfolioCards.find((card) => card.slug === slug));
 
 function joinPath(...parts) {
   return parts.filter(Boolean).join("/").replace(/([^:]\/)\/+/g, "$1");
@@ -41,7 +54,7 @@ function escapeHtml(value) {
 }
 
 function pageFrame(activeCategory = "") {
-  const categoryLinks = homePortfolioCards
+  const categoryLinks = navigationPortfolioCards
     .map((category) => {
       const active = category.slug === activeCategory ? " is-active" : "";
       return `<a class="pill${active}" href="${previewUrl(`${category.slug}/index.html`)}">${escapeHtml(category.title)}</a>`;
@@ -214,6 +227,21 @@ function renderTrendPage() {
   `;
 }
 
+function renderDesignDevelopmentPage() {
+  const designDevelopment = preview.designDevelopment;
+  document.title = `${designDevelopment.title} - Cat Bassett Designs`;
+  document.querySelector(".page").innerHTML = `
+    ${pageFrame("design-development")}
+    <section class="hero-grid">
+      <div class="hero-copy"><div class="eyebrow">${escapeHtml(designDevelopment.title)}</div><h1>Commercial design from initial direction to finished product.</h1><p>${escapeHtml(designDevelopment.intro)}</p></div>
+      <div class="hero-image hero-image--design-development"><img src="${imageUrl(designDevelopment.heroImage)}" alt="${escapeHtml(designDevelopment.title)}"></div>
+    </section>
+    <section>${gallery(designDevelopment)}</section>
+    ${lightbox()}
+    ${footer()}
+  `;
+}
+
 function bindLightbox() {
   document.addEventListener("click", (event) => {
     const trigger = event.target.closest("[data-lightbox-src]");
@@ -241,6 +269,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const category = preview.categories[categorySlug];
   if (page === "home") renderHome();
   if (page === "trend") renderTrendPage();
+  if (page === "design-development") renderDesignDevelopmentPage();
   if (page === "category" && category) renderCategory(category);
   if (page === "collection" && category) {
     const collection = category.collections.find((item) => item.slug === collectionSlug);

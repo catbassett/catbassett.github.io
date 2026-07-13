@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Design and Development</title>
+  <desc id="desc">A floral-framed panel featuring retail brand wordmarks.</desc>
+  <defs>
+    <pattern id="floral" width="150" height="150" patternUnits="userSpaceOnUse">
+      <rect width="150" height="150" fill="#f0e7dd"/>
+      <path d="M12 136 C42 108 60 84 72 31 M51 145 C78 110 105 86 141 68" fill="none" stroke="#496657" stroke-width="6" stroke-linecap="round"/>
+      <path d="M48 92 C22 79 19 61 45 58 C57 70 58 84 48 92Z M78 74 C104 57 121 62 121 85 C104 93 89 88 78 74Z" fill="#79917e"/>
+      <g transform="translate(63 38)">
+        <ellipse rx="18" ry="9" fill="#c86e76" transform="rotate(0)"/>
+        <ellipse rx="18" ry="9" fill="#c86e76" transform="rotate(60)"/>
+        <ellipse rx="18" ry="9" fill="#c86e76" transform="rotate(120)"/>
+        <circle r="7" fill="#ecb75d"/>
+      </g>
+      <g transform="translate(119 113)">
+        <ellipse rx="13" ry="7" fill="#df9ba0" transform="rotate(0)"/>
+        <ellipse rx="13" ry="7" fill="#df9ba0" transform="rotate(60)"/>
+        <ellipse rx="13" ry="7" fill="#df9ba0" transform="rotate(120)"/>
+        <circle r="5" fill="#f1c75f"/>
+      </g>
+    </pattern>
+  </defs>
+  <rect width="1200" height="1200" fill="#eee6dc"/>
+  <rect x="44" y="44" width="1112" height="1112" rx="14" fill="#171816"/>
+  <rect x="70" y="70" width="1060" height="1060" rx="6" fill="url(#floral)"/>
+  <rect x="188" y="188" width="824" height="824" rx="5" fill="#fbf8f2" stroke="#171816" stroke-width="4"/>
+  <text x="600" y="292" fill="#5e655f" font-family="Helvetica, Arial, sans-serif" font-size="26" font-weight="700" letter-spacing="5" text-anchor="middle">DESIGN + DEVELOPMENT</text>
+  <line x1="282" y1="328" x2="918" y2="328" stroke="#d7cfc2" stroke-width="3"/>
+  <text x="600" y="433" fill="#161616" font-family="Helvetica, Arial, sans-serif" font-size="57" font-weight="700" letter-spacing="-3" text-anchor="middle">RIVER ISLAND</text>
+  <text x="600" y="527" fill="#171717" font-family="Helvetica, Arial, sans-serif" font-size="72" font-weight="900" letter-spacing="-5" text-anchor="middle">NEW LOOK</text>
+  <text x="600" y="626" fill="#ef6b2e" font-family="Helvetica, Arial, sans-serif" font-size="71" font-weight="700" letter-spacing="-4" text-anchor="middle">Sainsbury's</text>
+  <line x1="282" y1="678" x2="918" y2="678" stroke="#d7cfc2" stroke-width="3"/>
+  <text x="462" y="760" fill="#151515" font-family="Helvetica, Arial, sans-serif" font-size="50" font-weight="700" letter-spacing="4">DUNNES</text>
+  <text x="629" y="805" fill="#151515" font-family="Helvetica, Arial, sans-serif" font-size="31" font-weight="300" letter-spacing="3">STORES</text>
+  <text x="600" y="857" fill="#873649" font-family="Georgia, serif" font-size="64" font-style="italic" text-anchor="middle">nutmeg</text>
+  <text x="600" y="937" fill="#151515" font-family="Helvetica, Arial, sans-serif" font-size="59" font-weight="900" letter-spacing="-5" text-anchor="middle">NEXT</text>
+</svg>
