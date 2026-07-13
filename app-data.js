@@ -119,17 +119,6 @@ window.collectionPreviewData = {
             "assets/images/2022/10/printgeo1.png-w=909",
             "assets/images/2022/10/printlace1.png-w=909"
           ]
-        },
-        {
-          "order": 5,
-          "slug": "image-order-demo",
-          "title": "Image Order Demo",
-          "cover": "assets/images/collections/prints/05-image-order-demo/cover.png",
-          "hero": "assets/images/collections/prints/05-image-order-demo/hero.png",
-          "images": [
-            "assets/images/collections/prints/05-image-order-demo/01-image-1.png",
-            "assets/images/collections/prints/05-image-order-demo/02-image-2.png"
-          ]
         }
       ]
     },
