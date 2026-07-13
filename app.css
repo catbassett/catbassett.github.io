@@ -81,10 +81,30 @@
   height: auto;
 }
 
+.collection-preview .collection-card--white img,
+.collection-preview .gallery-card--white,
+.collection-preview .gallery-card--white .gallery-trigger {
+  background: #fff;
+}
+
+.collection-preview .collection-card--white img {
+  object-fit: contain;
+}
+
+.collection-preview .hero-image--level-two {
+  padding: 14px;
+  background: var(--panel-strong);
+}
+
+.collection-preview .hero-image--level-two img {
+  border-radius: 18px;
+  object-fit: contain;
+}
+
 .collection-preview .hero-image--design-development {
   display: grid;
   place-items: center;
-  padding: 14px;
+  padding: 22px;
   background: #eee6dc;
 }
 

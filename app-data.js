@@ -260,18 +260,55 @@ window.collectionPreviewData = {
     "slug": "design-development",
     "title": "Design & Development",
     "intro": "Commercial print and graphic development across womenswear, menswear and childrenswear, from initial direction through to buyer-ready CADs and production artwork.",
-    "heroImage": "assets/images/design-development.svg",
-    "images": [
-      "assets/images/design-development/01-design-development.jpg",
-      "assets/images/design-development/02-design-development.jpg",
-      "assets/images/design-development/03-design-development.jpg",
-      "assets/images/design-development/04-design-development.jpg",
-      "assets/images/design-development/05-design-development.jpg",
-      "assets/images/design-development/06-design-development.jpg",
-      "assets/images/design-development/07-design-development.jpg",
-      "assets/images/design-development/08-design-development.jpg",
-      "assets/images/design-development/09-design-development.jpg",
-      "assets/images/design-development/10-design-development.jpg"
+    "heroImage": "assets/images/design-development.svg?v=20260714c",
+    "collections": [
+      {
+        "order": 1,
+        "slug": "quirky-boutique",
+        "title": "Quirky Boutique",
+        "cover": "assets/images/design-development/quirky-boutique/Untitled-1-01.png",
+        "whiteBackground": true,
+        "images": [
+          "assets/images/design-development/quirky-boutique/Untitled-1-01.png",
+          "assets/images/design-development/quirky-boutique/Untitled-1-02.png",
+          "assets/images/design-development/quirky-boutique/Untitled-1-03.png",
+          "assets/images/design-development/quirky-boutique/Untitled-1-04.png",
+          "assets/images/design-development/quirky-boutique/Untitled-1-05.png"
+        ]
+      },
+      {
+        "order": 2,
+        "slug": "botanical",
+        "title": "Botanical",
+        "cover": "assets/images/design-development/botanical/Untitled-1-06.png",
+        "whiteBackground": true,
+        "images": [
+          "assets/images/design-development/botanical/Untitled-1-06.png",
+          "assets/images/design-development/botanical/Untitled-1-07.png",
+          "assets/images/design-development/botanical/Untitled-1-08.png",
+          "assets/images/design-development/botanical/Untitled-1-09.png",
+          "assets/images/design-development/botanical/Untitled-1-10.png"
+        ]
+      },
+      {
+        "order": 3,
+        "slug": "in-store",
+        "title": "In Store",
+        "cover": "assets/images/design-development/in-store/01-design-development.jpg",
+        "whiteBackground": true,
+        "images": [
+          "assets/images/design-development/in-store/01-design-development.jpg",
+          "assets/images/design-development/in-store/02-design-development.jpg",
+          "assets/images/design-development/in-store/03-design-development.jpg",
+          "assets/images/design-development/in-store/04-design-development.jpg",
+          "assets/images/design-development/in-store/05-design-development.jpg",
+          "assets/images/design-development/in-store/06-design-development.jpg",
+          "assets/images/design-development/in-store/07-design-development.jpg",
+          "assets/images/design-development/in-store/08-design-development.jpg",
+          "assets/images/design-development/in-store/09-design-development.jpg",
+          "assets/images/design-development/in-store/10-design-development.jpg"
+        ]
+      }
     ]
   }
 };

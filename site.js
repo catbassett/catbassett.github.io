@@ -56,6 +56,13 @@ const previewTrendCard = {
   image: "assets/images/trend-summer2627.png"
 };
 
+const previewDesignDevelopmentCard = {
+  slug: "design-development",
+  title: "Design & Development",
+  description: "Commercial print, graphics and product development from direction to production.",
+  image: "assets/images/design-development.svg?v=20260714c"
+};
+
 const portfolioPages = {
   prints: {
     eyebrow: "Prints",
@@ -519,7 +526,7 @@ function imageForCurrentSite(slug, fallback) {
 }
 
 function currentPortfolioCards() {
-  return usesPreviewNavigation() ? [previewTrendCard, ...portfolioCards] : portfolioCards;
+  return usesPreviewNavigation() ? [previewTrendCard, previewDesignDevelopmentCard, ...portfolioCards] : portfolioCards;
 }
 
 function topNav(active) {

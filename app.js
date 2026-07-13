@@ -2,7 +2,7 @@ const preview = window.collectionPreviewData;
 
 const homePortfolioCards = [
   { slug: "trend", title: "Trend", description: "Seasonal womenswear direction, colour and graphic research.", image: "assets/images/trend-summer2627.png" },
-  { slug: "design-development", title: "Design & Development", description: "Commercial print, graphics and product development from direction to production.", image: "assets/images/design-development.svg" },
+  { slug: "design-development", title: "Design & Development", description: "Commercial print, graphics and product development from direction to production.", image: "assets/images/design-development.svg?v=20260714b" },
   { slug: "prints", title: "Prints", description: "Painterly florals, decorative repeats and more elevated print collections.", image: "assets/images/2021/02/instagram-page.jpg" },
   { slug: "graphics", title: "Graphics", description: "Placement graphics and motifs developed with clarity, style and commercial polish.", image: "assets/images/graphics.png" },
   { slug: "athleisure", title: "athleisure", description: "Application-led print development showing versatility across broader fashion categories.", image: "assets/images/2026/05/gemini_generated_image_5pl4md5pl4md5pl4.png" },
@@ -78,7 +78,7 @@ function pageFrame(activeCategory = "") {
 
 function collectionCard(category, collection) {
   return `
-    <a class="collection-card" href="${previewUrl(`${category.slug}/${collection.slug}/index.html`)}">
+    <a class="collection-card${collection.whiteBackground ? " collection-card--white" : ""}" href="${previewUrl(`${category.slug}/${collection.slug}/index.html`)}">
       <img src="${imageUrl(collection.cover)}" alt="${escapeHtml(collection.title)}">
       <div class="collection-card__copy">
         <div class="eyebrow">${escapeHtml(category.title)}</div>
@@ -94,7 +94,7 @@ function gallery(collection) {
       ${collection.images
         .map(
           (image, index) => `
-            <figure class="gallery-card">
+            <figure class="gallery-card${collection.whiteBackground ? " gallery-card--white" : ""}">
               <button class="gallery-trigger" type="button" data-lightbox-src="${imageUrl(image)}" data-lightbox-alt="${escapeHtml(collection.title)} image ${index + 1}" aria-label="Open ${escapeHtml(collection.title)} image ${index + 1} larger">
                 <img loading="lazy" src="${imageUrl(image)}" alt="${escapeHtml(collection.title)} image ${index + 1}">
               </button>
@@ -185,7 +185,7 @@ function renderCategory(category) {
         <p>${escapeHtml(page.intro)}</p>
         <div class="hero-stats">${page.stats.map(([value, label]) => `<div class="stat"><strong>${escapeHtml(value)}</strong><span>${escapeHtml(label)}</span></div>`).join("")}</div>
       </div>
-      <div class="hero-image"><img src="${imageUrl(page.heroImage)}" alt="${escapeHtml(category.title)}"><div class="hero-note">${escapeHtml(page.note)}</div></div>
+      <div class="hero-image hero-image--level-two"><img src="${imageUrl(page.heroImage)}" alt="${escapeHtml(category.title)}"><div class="hero-note">${escapeHtml(page.note)}</div></div>
     </section>
     <section>
       <div class="section-head"><div><div class="eyebrow">Overview</div><h2>A closer view of the work.</h2></div></div>
@@ -219,7 +219,7 @@ function renderTrendPage() {
     ${pageFrame("trend")}
     <section class="hero-grid">
       <div class="hero-copy"><div class="eyebrow">${escapeHtml(trend.title)}</div><h1>${escapeHtml(trend.season)}</h1><p>${escapeHtml(trend.intro)}</p></div>
-      <div class="hero-image"><img src="${imageUrl(trend.heroImage)}" alt="${escapeHtml(trend.title)} ${escapeHtml(trend.season)}"></div>
+      <div class="hero-image hero-image--level-two"><img src="${imageUrl(trend.heroImage)}" alt="${escapeHtml(trend.title)} ${escapeHtml(trend.season)}"></div>
     </section>
     <section>${gallery(trend)}</section>
     ${lightbox()}
@@ -234,9 +234,23 @@ function renderDesignDevelopmentPage() {
     ${pageFrame("design-development")}
     <section class="hero-grid">
       <div class="hero-copy"><div class="eyebrow">${escapeHtml(designDevelopment.title)}</div><h1>Commercial design from initial direction to finished product.</h1><p>${escapeHtml(designDevelopment.intro)}</p></div>
-      <div class="hero-image hero-image--design-development"><img src="${imageUrl(designDevelopment.heroImage)}" alt="${escapeHtml(designDevelopment.title)}"></div>
+      <div class="hero-image hero-image--level-two hero-image--design-development"><img src="${imageUrl(designDevelopment.heroImage)}" alt="${escapeHtml(designDevelopment.title)}"></div>
     </section>
-    <section>${gallery(designDevelopment)}</section>
+    <section>
+      <div class="section-head"><div><div class="eyebrow">Collections</div></div></div>
+      <div class="collection-grid">${designDevelopment.collections.map((collection) => collectionCard(designDevelopment, collection)).join("")}</div>
+    </section>
+    ${footer()}
+  `;
+}
+
+function renderDesignDevelopmentCollection(collection) {
+  const designDevelopment = preview.designDevelopment;
+  document.title = `${collection.title} - ${designDevelopment.title} - Cat Bassett Designs`;
+  document.querySelector(".page").innerHTML = `
+    ${pageFrame("design-development")}
+    <div class="breadcrumb"><a href="${previewUrl("design-development/index.html")}">${escapeHtml(designDevelopment.title)}</a><span>/</span><span>${escapeHtml(collection.title)}</span></div>
+    <section>${gallery(collection)}</section>
     ${lightbox()}
     ${footer()}
   `;
@@ -270,6 +284,10 @@ document.addEventListener("DOMContentLoaded", () => {
   if (page === "home") renderHome();
   if (page === "trend") renderTrendPage();
   if (page === "design-development") renderDesignDevelopmentPage();
+  if (page === "design-development-collection") {
+    const collection = preview.designDevelopment.collections.find((item) => item.slug === collectionSlug);
+    if (collection) renderDesignDevelopmentCollection(collection);
+  }
   if (page === "category" && category) renderCategory(category);
   if (page === "collection" && category) {
     const collection = category.collections.find((item) => item.slug === collectionSlug);
