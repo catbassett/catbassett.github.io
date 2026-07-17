@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Trend Spring Summer 26/27</title>
+  <desc id="desc">A violet portfolio tile with warm yellow lettering.</desc>
+  <rect width="1200" height="1200" fill="#45215f"/>
+  <text x="600" y="448" fill="#f4d35e" font-family="Snell Roundhand" font-size="118" font-weight="500" text-anchor="middle">Trend</text>
+  <text x="600" y="620" fill="#f4d35e" font-family="Snell Roundhand" font-size="118" font-weight="500" text-anchor="middle">Spring Summer</text>
+  <text x="600" y="810" fill="#f4d35e" font-family="Snell Roundhand" font-size="132" font-weight="500" text-anchor="middle">26/27</text>
+</svg>

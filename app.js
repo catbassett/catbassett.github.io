@@ -1,15 +1,15 @@
 const preview = window.collectionPreviewData;
 
 const homePortfolioCards = [
-  { slug: "trend", title: "Trend", description: "Seasonal womenswear direction, colour and graphic research.", image: "assets/images/trend-summer2627.png" },
-  { slug: "design-development", title: "Design & Development", description: "Commercial print, graphics and product development from direction to production.", image: "assets/images/design-development.svg?v=20260717" },
   { slug: "prints", title: "Prints", description: "Painterly florals, decorative repeats and more elevated print collections.", image: "assets/images/2021/02/instagram-page.jpg" },
   { slug: "graphics", title: "Graphics", description: "Placement graphics and motifs developed with clarity, style and commercial polish.", image: "assets/images/graphics.png" },
-  { slug: "athleisure", title: "athleisure", description: "Application-led print development showing versatility across broader fashion categories.", image: "assets/images/2026/05/gemini_generated_image_5pl4md5pl4md5pl4.png" },
   { slug: "conversational", title: "Conversational", description: "Illustrative and narrative surface design with personality, charm and repeat potential.", image: "assets/images/2022/10/printbird2.png" },
-  { slug: "kids", title: "Kids", description: "Playful print and graphic work with warmth, clarity and strong seasonal storytelling.", image: "assets/images/kids.png" },
+  { slug: "athleisure", title: "athleisure", description: "Application-led print development showing versatility across broader fashion categories.", image: "assets/images/2026/05/gemini_generated_image_5pl4md5pl4md5pl4.png" },
   { slug: "embroideries", title: "Embroideries", description: "Placement and motif-driven embroidery with a stronger luxury and craft sensibility.", image: "assets/images/2021/02/embroideries-home.png" },
-  { slug: "interiors", title: "Interiors", description: "Print and artwork translated into more atmospheric, lifestyle-led interior settings.", image: "assets/images/2021/03/design-01ked4begc-1767820078.png" }
+  { slug: "kids", title: "Kids", description: "Playful print and graphic work with warmth, clarity and strong seasonal storytelling.", image: "assets/images/kids.png" },
+  { slug: "interiors", title: "Interiors", description: "Print and artwork translated into more atmospheric, lifestyle-led interior settings.", image: "assets/images/2021/03/design-01ked4begc-1767820078.png" },
+  { slug: "design-development", title: "Design & Development", description: "Commercial print, graphics and product development from direction to production.", image: "assets/images/design-development.svg?v=20260717" },
+  { slug: "trend", title: "Trend", description: "Seasonal womenswear direction, colour and graphic research.", image: "assets/images/trend-home.svg?v=20260717c" }
 ];
 
 const navigationPortfolioCards = [
