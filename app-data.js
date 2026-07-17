@@ -260,7 +260,7 @@ window.collectionPreviewData = {
     "slug": "design-development",
     "title": "Design & Development",
     "intro": "Commercial print and graphic development across womenswear, menswear and childrenswear, from initial direction through to buyer-ready CADs and production artwork.",
-    "heroImage": "assets/images/design-development.svg?v=20260714c",
+    "heroImage": "assets/images/design-development.svg?v=20260717",
     "collections": [
       {
         "order": 1,

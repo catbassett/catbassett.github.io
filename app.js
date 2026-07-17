@@ -2,7 +2,7 @@ const preview = window.collectionPreviewData;
 
 const homePortfolioCards = [
   { slug: "trend", title: "Trend", description: "Seasonal womenswear direction, colour and graphic research.", image: "assets/images/trend-summer2627.png" },
-  { slug: "design-development", title: "Design & Development", description: "Commercial print, graphics and product development from direction to production.", image: "assets/images/design-development.svg?v=20260714b" },
+  { slug: "design-development", title: "Design & Development", description: "Commercial print, graphics and product development from direction to production.", image: "assets/images/design-development.svg?v=20260717" },
   { slug: "prints", title: "Prints", description: "Painterly florals, decorative repeats and more elevated print collections.", image: "assets/images/2021/02/instagram-page.jpg" },
   { slug: "graphics", title: "Graphics", description: "Placement graphics and motifs developed with clarity, style and commercial polish.", image: "assets/images/graphics.png" },
   { slug: "athleisure", title: "athleisure", description: "Application-led print development showing versatility across broader fashion categories.", image: "assets/images/2026/05/gemini_generated_image_5pl4md5pl4md5pl4.png" },
@@ -124,8 +124,8 @@ function footer() {
 
 function portfolioCard(card) {
   return `
-    <a class="portfolio-card" href="${previewUrl(`${card.slug}/index.html`)}">
-      <img src="${imageUrl(card.image)}" alt="${escapeHtml(card.title)}">
+    <a class="portfolio-card portfolio-card--${escapeHtml(card.slug)}" href="${previewUrl(`${card.slug}/index.html`)}">
+      <div class="portfolio-image"><img src="${imageUrl(card.image)}" alt="${escapeHtml(card.title)}"></div>
       <div class="portfolio-copy">
         <div class="eyebrow">Collection</div>
         <h3>${escapeHtml(card.title)}</h3>

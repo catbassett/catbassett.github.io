@@ -2,7 +2,6 @@
   <title id="title">Designer and High Street Brand and Development</title>
   <desc id="desc">Centred script lettering in a rounded panel.</desc>
   <rect width="1200" height="1200" fill="#eee9e1"/>
-  <rect x="48" y="198" width="1104" height="804" rx="42" fill="#fbf9f5" stroke="#d8d0c5" stroke-width="4"/>
-  <text x="600" y="552" fill="#27231f" font-family="Snell Roundhand" font-size="108" font-weight="500" text-anchor="middle">Designer and High Street</text>
-  <text x="600" y="716" fill="#27231f" font-family="Snell Roundhand" font-size="120" font-weight="500" text-anchor="middle">Brand + Development</text>
+  <text x="600" y="548" fill="#27231f" font-family="Snell Roundhand" font-size="118" font-weight="500" text-anchor="middle">Designer and High Street</text>
+  <text x="600" y="724" fill="#27231f" font-family="Snell Roundhand" font-size="132" font-weight="500" text-anchor="middle">Brand + Development</text>
 </svg>
